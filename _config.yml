@@ -11,7 +11,7 @@ remote_theme: jekyll/minima
 minima:
   skin: dark
   social_links:
-    discord: 636543487600492545 # TODO
+    discord: "636543487600492545" # TODO
     github: jyooru
     keybase: jyooru
     reddit: jyooru # TODO
