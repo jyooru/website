@@ -1,5 +1,9 @@
 .site-header {
-  border: 0;
+  border-color: $background-color;
+}
+
+.site-footer {
+  border-color: $background-color;
 }
 
 .site-title {
