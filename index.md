@@ -2,14 +2,12 @@
 layout: home
 ---
 
-# h1
+# hi
 
-## h2
+i'm joel, a teenage developer who is interested in open source and decentralisation. i enjoy automating as much as i can with code.
 
-### h3
+{% if site.posts.size != 0 %}
 
-#### h4
+# posts
 
-##### h5
-
-###### h6
+{% endif %}
