@@ -6,8 +6,10 @@
   border-color: $background-color;
 }
 
+.site-nav .page-link,
 .site-title {
-  font-weight: 500;
+  color: $site-title-color;
+  font-weight: 700;
 }
 
 h1,
