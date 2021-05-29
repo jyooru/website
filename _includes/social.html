@@ -19,4 +19,5 @@
   {%- if social.microdotblog -%}<li><a rel="me" href="https://micro.blog/{{ social.microdotblog | cgi_escape | escape }}" title="{{ social.microdotblog | escape }}"><svg class="svg-icon grey"><use xlink:href="{{ '/assets/minima-social-icons.svg#microdotblog' | relative_url }}"></use></svg></a></li>{%- endif -%}
   {%- if social.devto -%}<li><a href="https://dev.to/{{ social.devto | cgi_escape | escape }}" title="{{ social.devto | escape }}"><svg class="svg-icon grey"><use xlink:href="{{ '/assets/minima-social-icons.svg#devto' | relative_url }}"></use></svg></a></li>{%- endif -%}
   {%- if social.discord -%}<li><a href="https://discord.com/users/{{ social.discord | cgi_escape | escape }}" title="{{ social.discord | escape }}"><svg class="svg-icon grey"><use xlink:href="{{ '/assets/minima-social-icons.svg#discord' | relative_url }}"></use></svg></a></li>{%- endif -%}
+  {%- if social.repository -%}<li><a href="{{ social.repository }}" title="{{ social.repository }}"><svg class="svg-icon grey"><use xlink:href="{{ '/assets/minima-social-icons.svg#repository' | relative_url }}"></use></svg></a></li>{%- endif -%}
 </ul>
