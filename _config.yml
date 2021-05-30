@@ -11,11 +11,11 @@ remote_theme: jekyll/minima
 minima:
   skin: dark
   social_links:
-    discord: "636543487600492545" # TODO
+    discord: "636543487600492545" 
     github: jyooru
     keybase: jyooru
-    reddit: jyooru # TODO
-    repository: https://github.com/jyooru/website # TODO
+    reddit: jyooru 
+    repository: https://github.com/jyooru/website 
     twitter: jyooru
 plugins:
   - jekyll-feed
