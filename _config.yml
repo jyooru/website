@@ -1,6 +1,6 @@
 title: joel
 description: >- # this means to ignore newlines until "baseurl:"
-  i’m joel, a teenage developer who is interested in open source and decentralisation. i enjoy automating as much as i can with code.
+  i’m joel, a teenage developer interested in cybersecurity, open source and decentralisation. i enjoy automating as much as i can with code.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 header_pages:

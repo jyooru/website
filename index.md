@@ -4,7 +4,7 @@ layout: home
 
 # hi
 
-i'm joel, a teenage developer who is interested in open source and decentralisation. i enjoy automating as much as i can with code.
+{{ site.description }}
 
 {% if site.posts.size != 0 %}
 
