@@ -9,19 +9,19 @@ below are my public keys for both [gpg](#gpg) and [ssh](#ssh).
 ## gpg
 
 ```
-curl https://joel.tokyo/keys/gpg.asc | gpg --import
+curl https://joel.tokyo/keys/gpg | gpg --import
 ```
 
 ```
-{% include_relative gpg.asc %}
+{% include_relative gpg %}
 ```
 
 ## ssh
 
 ```
-curl https://joel.tokyo/keys/id_rsa.pub >> ~/.ssh/authorized_keys
+curl https://joel.tokyo/keys/ssh >> ~/.ssh/authorized_keys
 ```
 
 ```
-{% include_relative id_rsa.pub %}
+{% include_relative ssh %}
 ```
