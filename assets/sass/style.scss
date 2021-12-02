@@ -1,1 +1,34 @@
 @import "terminal"; // node_modules/terminal.css/dist/terminal.css
+
+.terminal-command,
+.terminal-menu li a {
+  transition: color 0.2s;
+}
+
+.terminal-command {
+  color: var(--secondary-color);
+  font-weight: normal;
+}
+
+.terminal-prompt {
+  &::before {
+    content: none;
+  }
+  &::after {
+    animation: none;
+    content: "a";
+    color: transparent;
+    margin-left: 0; // there is a space there
+    opacity: 0;
+    width: auto;
+  }
+}
+
+.terminal-nav:hover {
+  .terminal-command {
+    color: var(--font-color);
+  }
+  .terminal-prompt::after {
+    animation: cursor 1.5s step-start infinite;
+  }
+}
