@@ -1,5 +1,7 @@
 @import "terminal"; // node_modules/terminal.css/dist/terminal.css
 
+@import "_headings";
+
 .terminal-command,
 .terminal-menu li a {
   transition: color 0.2s;
