@@ -1,0 +1,31 @@
+{
+  "name": "website",
+  "version": "0.0.1",
+  "dependencies": {
+    "terminal.css": "^0.7.2"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^0.12.1"
+  },
+  "scripts": {
+    "build": "eleventy",
+    "watch": "eleventy --watch",
+    "serve": "eleventy --serve",
+    "start": "eleventy --serve",
+    "debug": "DEBUG=* eleventy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jyooru/website.git"
+  },
+  "author": {
+    "name": "Joel",
+    "email": "joel@joel.tokyo",
+    "url": "https://joel.tokyo/"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jyooru/website/issues"
+  },
+  "homepage": "https://github.com/jyooru/website#readme"
+}
