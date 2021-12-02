@@ -1,9 +1,7 @@
 {
   "name": "website",
   "version": "0.0.1",
-  "dependencies": {
-    "terminal.css": "^0.7.2"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@11ty/eleventy": "^0.12.1"
   },
