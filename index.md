@@ -1,13 +1,7 @@
 ---
-layout: home
+layout: page
 ---
 
-# hi
+## Hi
 
 {{ site.description }}
-
-{% if site.posts.size != 0 %}
-
-# posts
-
-{% endif %}
