@@ -34,3 +34,12 @@
     animation: cursor 1.5s step-start infinite;
   }
 }
+
+main {
+  min-height: calc(100vh - (61px * 2));
+}
+
+footer {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}

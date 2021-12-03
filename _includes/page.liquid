@@ -8,10 +8,11 @@
   </head>
   <body class="terminal">
     {% include nav %}
-    <div class="container">
+    <main class="container">
       {% if title %}
       <h1>{{ title | upcase }}</h1>
       {% endif %} {{ content | safe }}
-    </div>
+    </main>
+    {% include footer %}
   </body>
 </html>
