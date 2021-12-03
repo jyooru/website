@@ -4,6 +4,7 @@
   "dependencies": {},
   "devDependencies": {
     "@11ty/eleventy": "^0.12.1",
+    "@11ty/eleventy-cache-assets": "^2.3.0",
     "sass": "^1.44.0",
     "terminal.css": "^0.7.2"
   },
