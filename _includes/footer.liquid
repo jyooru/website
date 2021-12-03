@@ -21,7 +21,7 @@
           href="{{ git.repositoryURL }}/blob/{{ git.branch }}/{{
             page.inputPath | url
           }}"
-          > {{ page.inputPath | url }}</a
+          > {{ page.inputPath | url | reverse | truncate: 16 | reverse }}</a
         >
       </li>
       <li> {{ "now" | date: "%Y-%m-%d %H:%M:%S" }}</li>
