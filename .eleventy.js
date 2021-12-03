@@ -22,4 +22,7 @@ module.exports = function (eleventyConfig) {
     let parsed = path.parse(string);
     return path.join(parsed.dir, parsed.name);
   });
+  eleventyConfig.addFilter("reverse", function (string) {
+    return string.split("").reverse().join("");
+  });
 };
