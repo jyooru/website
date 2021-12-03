@@ -2,14 +2,26 @@
   <div class="terminal-menu">
     <ul>
       <li>
-        <a href="https://github.com/jyooru/website" target="_blank">repo</a>
+        <a href="{{ git.repositoryURL }}" target="_blank">{{
+          git.repository
+        }}</a>
+      </li>
+      <li>
+        <a href="{{ git.repositoryURL }}/blob/{{ git.branch }}" target="_blank">
+          {{ git.branch }}</a
+        >
+      </li>
+      <li>
+        <a href="{{ git.repositoryURL }}/blob/{{ git.commit }}" target="_blank">
+          {{ git.commit }}</a
+        >
       </li>
       <li>
         <a
-          href="https://github.com/jyooru/website/blob/main/{{
-            page.inputPath
+          href="{{ git.repositoryURL }}/blob/{{ git.branch }}/{{
+            page.inputPath | url
           }}"
-          >file</a
+          >{{ page.inputPath | url }}</a
         >
       </li>
     </ul>
