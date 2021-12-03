@@ -1,4 +1,5 @@
 const fs = require("fs");
+const path = require("path");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.setBrowserSyncConfig({
@@ -16,4 +17,9 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addWatchTarget("./assets/sass/");
+
+  eleventyConfig.addFilter("remove_extension", function (string) {
+    let parsed = path.parse(string);
+    return path.join(parsed.dir, parsed.name);
+  });
 };

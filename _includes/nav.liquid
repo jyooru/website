@@ -2,7 +2,9 @@
   <div class="terminal-nav">
     <header class="terminal-logo">
       <div class="logo terminal-prompt">
-        <a href="/" class="no-style">joel.tokyo:{{ page.url }}$</a>
+        <a href="/" class="no-style"
+          >joel.tokyo:{{ page.url | remove_extension }}$</a
+        >
         <span class="terminal-command">cd</span>
       </div>
     </header>
