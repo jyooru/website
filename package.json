@@ -5,6 +5,7 @@
   "devDependencies": {
     "@11ty/eleventy": "^0.12.1",
     "sass": "^1.44.0",
+    "simple-git": "^2.48.0",
     "terminal.css": "^0.7.2"
   },
   "scripts": {

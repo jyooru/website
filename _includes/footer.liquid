@@ -1,0 +1,30 @@
+<footer class="container">
+  <div class="terminal-menu">
+    <ul>
+      <li>
+        <a href="{{ git.repositoryURL }}" target="_blank"
+          > {{ git.repository }}</a
+        >
+      </li>
+      <li>
+        <a href="{{ git.repositoryURL }}/blob/{{ git.branch }}" target="_blank"
+          > {{ git.branch }}</a
+        >
+      </li>
+      <li>
+        <a href="{{ git.repositoryURL }}/blob/{{ git.commit }}" target="_blank">
+           {{ git.commit }}</a
+        >
+      </li>
+      <li>
+        <a
+          href="{{ git.repositoryURL }}/blob/{{ git.branch }}/{{
+            page.inputPath | url
+          }}"
+          > {{ page.inputPath | url | reverse | truncate: 16 | reverse }}</a
+        >
+      </li>
+      <li> {{ "now" | date: "%Y-%m-%d %H:%M:%S" }}</li>
+    </ul>
+  </div>
+</footer>

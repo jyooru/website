@@ -13,5 +13,3 @@ layout: page
 ##### h5
 
 ###### h6
-
-{{ site.description }}
