@@ -2,6 +2,14 @@
 
 @import "_headings";
 
+:root {
+  // todo: link FiraCode Nerd Font (feat/font)
+  --font-stack: FiraCode Nerd Font, Menlo, Monaco, Lucida Console,
+    Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New,
+    monospace, serif;
+  --mono-font-stack: var(--font-stack);
+}
+
 .terminal-command,
 .terminal-menu li a {
   transition: color 0.2s;
