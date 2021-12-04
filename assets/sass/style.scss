@@ -11,12 +11,18 @@
 }
 
 .terminal-command,
-.terminal-menu li a {
-  transition: color 0.2s;
+.terminal-menu li {
+  color: var(--secondary-color);
+
+  a {
+    transition: color 0.2s;
+    &:hover {
+      color: var(--font-color);
+    }
+  }
 }
 
 .terminal-command {
-  color: var(--secondary-color);
   font-weight: normal;
 }
 
