@@ -7,14 +7,14 @@ We live in a world where most people have no idea how important open source is t
 
 I'm not able to list every person and project this website depends on, but it's all still safely recorded elsewhere:
 
-- <a href="https://github.com/jyooru/website" target="_blank" rel="noopener">github:jyooru/website</a> contains all the code and dependencies used to build this website. The history of each dependency's exact version is stored in a lockfile inside this repository. Also, this website is open source - <a href="/license">view the license.</a>
-- <a href="https://github.com/jyooru/dotfiles" target="_blank" rel="noopener">github:jyooru/dotfiles</a> contains all the code and dependencies used to host this website. The history of each dependency's exact version is stored in a lockfile inside this repository. Also, the configuration behind my cluster is open source - <a href="https://github.com/jyooru/dotfiles/blob/main/LICENSE" target="_blank" rel="noopener">view the license.</a>
+- {% github_repository 'jyooru' 'website' %} contains all the code and dependencies used to build this website. The history of each dependency's exact version is stored in a lockfile inside this repository. Also, this website is open source - <a href="/license">view the license.</a>
+- {% github_repository 'jyooru' 'dotfiles' %} contains all the code and dependencies used to host this website. The history of each dependency's exact version is stored in a lockfile inside this repository. Also, the configuration behind my cluster is open source - <a href="https://github.com/jyooru/dotfiles/blob/main/LICENSE" target="_blank" rel="noopener">view the license.</a>
 
 ## Building
 
 ## Hosting
 
-This website is hosted on my [cluster](/projects/cluster). All the code and dependencies behind my cluster can be found in my dotfiles, <a href="https://github.com/jyooru/dotfiles" target="_blank" rel="noopener">github:jyooru/dotfiles</a>. Here are some highlights, specific to hosting this website:
+This website is hosted on my [cluster](/projects/cluster). All the code and dependencies behind my cluster can be found in my dotfiles, {% github_repository 'jyooru' 'dotfiles' %}. Here are some highlights, specific to hosting this website:
 
 - **Operating System Kernel**: Linux - <a href="https://kernel.org" target="_blank" rel="noopener">https://kernel.org</a>
   <p>The Linux kernel is a free and open source operating system kernel. The kernel is a core component of an operating system, providing the most basic level of control over all of the computer's hardware. As Linux is free and open source, it can be tailored for any kind of computing scenario, from personal computers to servers to supercomputers. Each node in my cluster runs Linux.</p>
@@ -26,5 +26,5 @@ This website is hosted on my [cluster](/projects/cluster). All the code and depe
   <p>nginx is a HTTP and reverse proxy server, a mail proxy server, and a generic TCP/UDP proxy server. It enables me to reverse proxy incoming HTTP connections by load balancing each connection to any node running Caddy in my cluster using the PROXY protocol. Each node in my cluster runs nginx to spread incoming HTTP connections across the whole cluster through a Nebula tunnel and serve this website.</p>
 - **HTTP Server**: Caddy - <a href="https://caddyserver.com/" targe="_blank" rel="noopener">https://caddyserver.com</a>
   <p>Caddy is a HTTP server designed to be simple, featuring a human readable configuration file and automatic TLS certificate renewals. Each node in my cluster runs Caddy to receive direct HTTP requests from other nodes' load balanced HTTP requests from the internet, such as this website.</p>
-- **Overlay Network**: Nebula - <a href="https://github.com/slackhq/nebula" target="_blank" rel="noopener">github:slackhq/nebula</a>
+- **Overlay Network**: Nebula - {% github_repository 'slackhq' 'nebula' %}
   <p>Nebula is a peer to peer software defined networking tool with a focus on performance, simplicity and security. Each node in my cluster is connected together flexibly and securely, using authentication and encryption. All HTTP requests are load balanced through a Nebula tunnel.</p>

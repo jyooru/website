@@ -19,6 +19,12 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addWatchTarget("./assets/sass/");
 
+  eleventyConfig.addShortcode(
+    "github_repository",
+    function (username, repositoryName) {
+      return `<a href="https://github.com/${username}/${repositoryName}" target="_blank" rel="noopener">github:${username}/${repositoryName}</a>`;
+    }
+  );
   eleventyConfig.addShortcode("now", function () {
     now = new Date().toISOString();
     date = now.split("T")[0];
