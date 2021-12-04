@@ -26,6 +26,9 @@ module.exports = function (eleventyConfig) {
     return date + " " + time;
   });
 
+  eleventyConfig.addFilter("get_extension", function (string) {
+    return string.split(".").pop();
+  });
   eleventyConfig.addFilter("remove_extension", function (string) {
     let parsed = path.parse(string);
     return path.join(parsed.dir, parsed.name);
