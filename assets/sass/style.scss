@@ -16,11 +16,12 @@
 .terminal-menu li {
   color: var(--secondary-color);
 
-  a {
+  &,
+  & a {
     transition: color 0.2s;
-    &:hover {
-      color: var(--font-color);
-    }
+  }
+  & a:hover {
+    color: var(--font-color);
   }
 }
 
