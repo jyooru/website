@@ -1,4 +1,5 @@
 const fs = require("fs");
+const htmlmin = require("html-minifier");
 const path = require("path");
 
 module.exports = function (eleventyConfig) {
@@ -31,5 +32,17 @@ module.exports = function (eleventyConfig) {
   });
   eleventyConfig.addFilter("reverse", function (string) {
     return string.split("").reverse().join("");
+  });
+
+  eleventyConfig.addTransform("htmlmin", function (content, outputPath) {
+    if (outputPath && outputPath.endsWith(".html")) {
+      let minified = htmlmin.minify(content, {
+        useShortDoctype: true,
+        removeComments: true,
+        collapseWhitespace: true,
+      });
+      return minified;
+    }
+    return content;
   });
 };
