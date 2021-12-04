@@ -1,15 +1,8 @@
 ---
 layout: page
+title: Welcome
 ---
 
-# h1
+## About
 
-## h2
-
-### h3
-
-#### h4
-
-##### h5
-
-###### h6
+Hi! My name is Joel, and I'm interested in the decentralised web and open source.
