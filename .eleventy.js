@@ -18,6 +18,13 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addWatchTarget("./assets/sass/");
 
+  eleventyConfig.addShortcode("now", function () {
+    now = new Date().toISOString();
+    date = now.split("T")[0];
+    time = now.split("T")[1].split(".")[0];
+    return date + " " + time;
+  });
+
   eleventyConfig.addFilter("remove_extension", function (string) {
     let parsed = path.parse(string);
     return path.join(parsed.dir, parsed.name);
