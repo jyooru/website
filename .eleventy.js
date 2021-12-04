@@ -25,6 +25,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addShortcode("a_blank_text", function (link) {
     return `<a href="${link}" target="_blank" rel="noopener">${link}</a>`;
   });
+  eleventyConfig.addShortcode("comment", function (text) {
+    return `<span class="comment">&lt;!-- ${text} --&gt;</span>`;
+  });
   eleventyConfig.addShortcode(
     "github_repository",
     function (username, repositoryName) {

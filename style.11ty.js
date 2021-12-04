@@ -15,7 +15,10 @@ module.exports = class {
   async render() {
     const result = await renderSass({
       file: inputFile,
-      includePaths: ["node_modules/terminal.css/dist"],
+      includePaths: [
+        "node_modules/terminal.css/dist",
+        "node_modules/normalize.css",
+      ],
       outputStyle: "compressed",
     });
 

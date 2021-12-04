@@ -1,7 +1,9 @@
 {
   "name": "website",
   "version": "0.0.1",
-  "dependencies": {},
+  "dependencies": {
+    "normalize.css": "^8.0.1"
+  },
   "devDependencies": {
     "@11ty/eleventy": "^0.12.1",
     "html-minifier": "^4.0.0",
