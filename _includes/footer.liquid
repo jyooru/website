@@ -2,17 +2,24 @@
   <div class="terminal-menu">
     <ul>
       <li>
-        <a href="{{ git.repositoryURL }}" target="_blank"
+        <a href="{{ git.repositoryURL }}" target="_blank" rel="noopener"
           > {{ git.repository }}</a
         >
       </li>
       <li>
-        <a href="{{ git.repositoryURL }}/blob/{{ git.branch }}" target="_blank"
+        <a
+          href="{{ git.repositoryURL }}/blob/{{ git.branch }}"
+          target="_blank"
+          rel="noopener"
           > {{ git.branch }}</a
         >
       </li>
       <li>
-        <a href="{{ git.repositoryURL }}/blob/{{ git.commit }}" target="_blank">
+        <a
+          href="{{ git.repositoryURL }}/blob/{{ git.commit }}"
+          target="_blank"
+          rel="noopener"
+        >
            {{ git.commit }}</a
         >
       </li>
