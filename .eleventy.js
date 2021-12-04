@@ -19,6 +19,12 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addWatchTarget("./assets/sass/");
 
+  eleventyConfig.addShortcode("a_blank", function (link, text) {
+    return `<a href="${link}" target="_blank" rel="noopener">${text}</a>`;
+  });
+  eleventyConfig.addShortcode("a_blank_text", function (link) {
+    return `<a href="${link}" target="_blank" rel="noopener">${link}</a>`;
+  });
   eleventyConfig.addShortcode(
     "github_repository",
     function (username, repositoryName) {
