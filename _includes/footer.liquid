@@ -2,18 +2,17 @@
   <div class="terminal-menu">
     <ul>
       <li>
-        <a href="{{ git.repositoryURL }}" target="_blank"
+        <a href="{{ git.repositoryURL }}" target="_blank" rel="noopener"
           > {{ git.repository }}</a
         >
       </li>
       <li>
-        <a href="{{ git.repositoryURL }}/blob/{{ git.branch }}" target="_blank"
-          > {{ git.branch }}</a
+        <a
+          href="{{ git.repositoryURL }}/commit/{{ git.commit.long }}"
+          target="_blank"
+          rel="noopener"
         >
-      </li>
-      <li>
-        <a href="{{ git.repositoryURL }}/blob/{{ git.commit }}" target="_blank">
-           {{ git.commit }}</a
+           {{ git.commit.short }}</a
         >
       </li>
       <li>
@@ -21,10 +20,10 @@
           href="{{ git.repositoryURL }}/blob/{{ git.branch }}/{{
             page.inputPath | url
           }}"
-          > {{ page.inputPath | url | reverse | truncate: 16 | reverse }}</a
+          > {{ page.inputPath | get_extension }}</a
         >
       </li>
-      <li> {{ "now" | date: "%Y-%m-%d %H:%M:%S" }}</li>
+      <li> {% now %} UTC</li>
     </ul>
   </div>
 </footer>
