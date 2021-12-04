@@ -3,7 +3,7 @@ layout: page
 title: Credits
 ---
 
-We live in a world where most people have no idea how important open source is to our everyday lives. This page mentions the software I depend on to create and serve this website, and I hope that it helps present the importance of open source, especially considering this website is a microscopic part of the content available on the internet.
+We live in a world where most people have no idea how important open source is to our everyday lives. This page mentions the software I depend on to create and serve this website and I hope that it displays the importance of open source - especially considering this website is a microscopic part of the content available on the internet and depends on so many people and their work.
 
 I'm not able to list every person and project this website depends on, but it's all still safely recorded elsewhere:
 
