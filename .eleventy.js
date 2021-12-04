@@ -19,6 +19,9 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addWatchTarget("./assets/sass/");
 
+  eleventyConfig.addShortcode("comment", function (text) {
+    return `<span class="comment">&lt;!-- ${text} --&gt;</span>`;
+  });
   eleventyConfig.addShortcode("now", function () {
     now = new Date().toISOString();
     date = now.split("T")[0];
