@@ -8,7 +8,7 @@ module.exports = function (eleventyConfig) {
       ready: function (err, bs) {
         bs.addMiddleware("*", (req, res) => {
           // enable 404 page for eleventy --serve
-          const content_404 = fs.readFileSync("_site/404.html");
+          const content_404 = fs.readFileSync("dist/404.html");
           res.writeHead(404, { "Content-Type": "text/html; charset=UTF-8" });
           res.write(content_404);
           res.end();
@@ -64,5 +64,5 @@ module.exports = function (eleventyConfig) {
     return content;
   });
 
-  return { dir: { input: "src" } };
+  return { dir: { input: "./src", output: "./dist" } };
 };

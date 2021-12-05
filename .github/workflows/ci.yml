@@ -19,7 +19,7 @@ jobs:
       - name: Build site
         run: npm run build
       - name: Create tarball
-        run: tar -C "_site" -cvf "joel.tokyo.tar.gz" "."
+        run: tar -C "dist" -cvf "joel.tokyo.tar.gz" "."
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
