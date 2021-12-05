@@ -3,7 +3,7 @@ const sass = require("sass");
 const renderSass = util.promisify(sass.render);
 
 const inputFile = "src/assets/sass/style.scss";
-const outputFile = "src/assets/style.css";
+const outputFile = "assets/style.css";
 
 module.exports = class {
   data() {
