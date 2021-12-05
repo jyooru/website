@@ -1,0 +1,29 @@
+<footer class="container">
+  <div class="terminal-menu">
+    <ul>
+      <li>
+        <a href="{{ git.repositoryURL }}" target="_blank" rel="noopener"
+          > {{ git.repository }}</a
+        >
+      </li>
+      <li>
+        <a
+          href="{{ git.repositoryURL }}/commit/{{ git.commit.long }}"
+          target="_blank"
+          rel="noopener"
+        >
+           {{ git.commit.short }}</a
+        >
+      </li>
+      <li>
+        <a
+          href="{{ git.repositoryURL }}/blob/{{ git.commit.long }}/{{
+            page.inputPath | url
+          }}"
+          > {{ page.inputPath | get_extension }}</a
+        >
+      </li>
+      <li> {% now %} UTC</li>
+    </ul>
+  </div>
+</footer>

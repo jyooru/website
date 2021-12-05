@@ -1,0 +1,77 @@
+@import "normalize"; // node_modules/normalize.css/normalize.css
+@import "terminal"; // node_modules/terminal.css/dist/terminal.css
+
+@import "_colors";
+@import "_headings";
+
+:root {
+  // todo: link FiraCode Nerd Font (feat/font)
+  --font-stack: FiraCode Nerd Font, Menlo, Monaco, Lucida Console,
+    Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New,
+    monospace, serif;
+  --mono-font-stack: var(--font-stack);
+}
+
+.terminal-command,
+.terminal-menu li {
+  color: var(--secondary-color);
+
+  &,
+  & a {
+    transition: color 0.2s;
+  }
+  & a:hover {
+    color: var(--font-color);
+  }
+}
+
+.terminal-command {
+  font-weight: normal;
+}
+
+.terminal-prompt {
+  &::before {
+    content: none;
+  }
+  &::after {
+    animation: none;
+    content: "a";
+    color: transparent;
+    margin-left: 0; // there is a space there
+    opacity: 0;
+    width: auto;
+  }
+}
+
+.terminal-nav:hover {
+  .terminal-command {
+    color: var(--font-color);
+  }
+  .terminal-prompt::after {
+    animation: cursor 1.5s step-start infinite;
+  }
+}
+
+main {
+  min-height: calc(100vh - (61px * 2));
+}
+
+footer {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  .terminal-menu ul {
+    justify-content: center;
+  }
+}
+
+p {
+  text-align: justify;
+}
+
+li p {
+  margin-bottom: 0;
+}
+
+.comment {
+  color: var(--secondary-color);
+}

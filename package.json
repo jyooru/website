@@ -1,0 +1,35 @@
+{
+  "name": "website",
+  "version": "0.0.1",
+  "dependencies": {
+    "normalize.css": "^8.0.1"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^0.12.1",
+    "html-minifier": "^4.0.0",
+    "sass": "^1.44.0",
+    "simple-git": "^2.48.0",
+    "terminal.css": "^0.7.2"
+  },
+  "scripts": {
+    "build": "eleventy",
+    "watch": "eleventy --watch",
+    "serve": "eleventy --serve",
+    "start": "eleventy --serve",
+    "debug": "DEBUG=* eleventy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jyooru/website.git"
+  },
+  "author": {
+    "name": "Joel",
+    "email": "joel@joel.tokyo",
+    "url": "https://joel.tokyo/"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jyooru/website/issues"
+  },
+  "homepage": "https://github.com/jyooru/website#readme"
+}
