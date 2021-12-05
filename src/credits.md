@@ -12,6 +12,8 @@ I'm not able to list every person and project this website depends on, but it's 
 
 ## Building
 
+{% comment 'TODO' %}
+
 ## Hosting
 
 This website is hosted on my <a href="{{ '/projects/cluster' | url }}">cluster</a>. All the code and dependencies behind my cluster can be found in my dotfiles, {% github_repository 'jyooru' 'dotfiles' %}. Here are some highlights, specific to hosting this website:
