@@ -7,10 +7,14 @@ module.exports = function (eleventyConfig) {
     callbacks: {
       ready: function (err, bs) {
         bs.addMiddleware("*", (req, res) => {
-          // enable 404 page for eleventy --serve
-          const content_404 = fs.readFileSync("dist/404.html");
+          // enable 404 page and trying {url}.html for eleventy --serve
+          alternativePath = `dist/${req.url}.html`;
+          var contentPath = "dist/404.html";
+          if (fs.existsSync(alternativePath)) {
+            contentPath = alternativePath;
+          }
           res.writeHead(404, { "Content-Type": "text/html; charset=UTF-8" });
-          res.write(content_404);
+          res.write(fs.readFileSync(contentPath));
           res.end();
         });
       },
