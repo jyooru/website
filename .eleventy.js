@@ -7,17 +7,21 @@ module.exports = function (eleventyConfig) {
     callbacks: {
       ready: function (err, bs) {
         bs.addMiddleware("*", (req, res) => {
-          // enable 404 page for eleventy --serve
-          const content_404 = fs.readFileSync("_site/404.html");
+          // enable 404 page and trying {url}.html for eleventy --serve
+          alternativePath = `dist/${req.url}.html`;
+          var contentPath = "dist/404.html";
+          if (fs.existsSync(alternativePath)) {
+            contentPath = alternativePath;
+          }
           res.writeHead(404, { "Content-Type": "text/html; charset=UTF-8" });
-          res.write(content_404);
+          res.write(fs.readFileSync(contentPath));
           res.end();
         });
       },
     },
   });
 
-  eleventyConfig.addWatchTarget("./assets/sass/");
+  eleventyConfig.addWatchTarget("./src/assets/sass/");
 
   eleventyConfig.addShortcode("a_blank", function (link, text) {
     return `<a href="${link}" target="_blank" rel="noopener">${text}</a>`;
@@ -27,6 +31,9 @@ module.exports = function (eleventyConfig) {
   });
   eleventyConfig.addShortcode("comment", function (text) {
     return `<span class="comment">&lt;!-- ${text} --&gt;</span>`;
+  });
+  eleventyConfig.addShortcode("generate_permalink", function (pageOutPath) {
+    return pageOutPath + ".html";
   });
   eleventyConfig.addShortcode(
     "github_repository",
@@ -63,4 +70,6 @@ module.exports = function (eleventyConfig) {
     }
     return content;
   });
+
+  return { dir: { input: "./src", output: "./dist" } };
 };

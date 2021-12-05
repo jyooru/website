@@ -7,12 +7,6 @@
     <link rel="stylesheet" href="/assets/style.css" />
   </head>
   <body class="terminal">
-    {% include nav %}
-    <main class="container">
-      {% if title %}
-      <h1>{{ title | upcase }}</h1>
-      {% endif %} {{ content | safe }}
-    </main>
-    {% include footer %}
+    {{ content }}
   </body>
 </html>
