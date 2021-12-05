@@ -65,9 +65,9 @@ footer {
       &,
       a:not(.btn) {
         color: var(--tertiary-color);
-        &:hover {
-          color: var(--secondary-color);
-        }
+      }
+      a:not(.btn):hover {
+        color: var(--secondary-color);
       }
     }
   }
