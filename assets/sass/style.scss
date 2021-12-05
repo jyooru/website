@@ -63,3 +63,15 @@ footer {
     justify-content: center;
   }
 }
+
+p {
+  text-align: justify;
+}
+
+li p {
+  margin-bottom: 0;
+}
+
+.comment {
+  color: var(--secondary-color);
+}

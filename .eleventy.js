@@ -19,9 +19,21 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addWatchTarget("./assets/sass/");
 
+  eleventyConfig.addShortcode("a_blank", function (link, text) {
+    return `<a href="${link}" target="_blank" rel="noopener">${text}</a>`;
+  });
+  eleventyConfig.addShortcode("a_blank_text", function (link) {
+    return `<a href="${link}" target="_blank" rel="noopener">${link}</a>`;
+  });
   eleventyConfig.addShortcode("comment", function (text) {
     return `<span class="comment">&lt;!-- ${text} --&gt;</span>`;
   });
+  eleventyConfig.addShortcode(
+    "github_repository",
+    function (username, repositoryName) {
+      return `<a href="https://github.com/${username}/${repositoryName}" target="_blank" rel="noopener">github:${username}/${repositoryName}</a>`;
+    }
+  );
   eleventyConfig.addShortcode("now", function () {
     now = new Date().toISOString();
     date = now.split("T")[0];
