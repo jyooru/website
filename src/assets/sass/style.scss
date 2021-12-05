@@ -61,6 +61,15 @@ footer {
   padding-bottom: 20px;
   .terminal-menu ul {
     justify-content: center;
+    li {
+      &,
+      a:not(.btn) {
+        color: var(--tertiary-color);
+        &:hover {
+          color: var(--secondary-color);
+        }
+      }
+    }
   }
 }
 
@@ -70,4 +79,8 @@ p {
 
 li p {
   margin-bottom: 0;
+}
+
+.comment {
+  color: var(--tertiary-color);
 }
