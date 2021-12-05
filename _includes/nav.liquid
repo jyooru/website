@@ -2,7 +2,7 @@
   <div class="terminal-nav">
     <header class="terminal-logo">
       <div class="logo terminal-prompt">
-        <a href="/" class="no-style"
+        <a href="{{ '/' | url }}" class="no-style"
           >joel.tokyo:{{ page.url | remove_extension }}$</a
         >
         <span class="terminal-command">cd&nbsp;</span>
@@ -11,13 +11,13 @@
     <div class="terminal-menu">
       <nav>
         <ul>
-          <li><a href="/" class="menu-item">/</a></li>
-          <li><a href="/projects" class="menu-item">/projects</a></li>
-          <li><a href="/status" class="menu-item">/status</a></li>
-          <li><a href="/keys/" class="menu-item">/keys</a></li>
-          <li><a href="/contact" class="menu-item">/contact</a></li>
+          <li><a href="{{ '/' | url }}" class="menu-item">/</a></li>
+          <li><a href="{{ '/projects' | url }}" class="menu-item">/projects</a></li>
+          <li><a href="{{ '/status' | url }}" class="menu-item">/status</a></li>
+          <li><a href="{{ '/keys/' | url }}" class="menu-item">/keys</a></li>
+          <li><a href="{{ '/contact' | url }}" class="menu-item">/contact</a></li>
           <li>
-            <a href="/credits" class="menu-item">/credits</a>
+            <a href="{{ '/credits' | url }}" class="menu-item">/credits</a>
           </li>
         </ul>
       </nav>

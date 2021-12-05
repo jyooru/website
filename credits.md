@@ -7,14 +7,14 @@ We live in a world where most people have no idea how important open source is t
 
 I'm not able to list every person and project this website depends on, but it's all still safely recorded elsewhere:
 
-- {% github_repository 'jyooru' 'website' %} contains all the code and dependencies used to build this website. The history of each dependency's exact version is stored in a lockfile inside this repository. Also, this website is open source - <a href="/license">view the license.</a>
+- {% github_repository 'jyooru' 'website' %} contains all the code and dependencies used to build this website. The history of each dependency's exact version is stored in a lockfile inside this repository. Also, this website is open source - <a href="{{ '/license' | url }}">view the license.</a>
 - {% github_repository 'jyooru' 'dotfiles' %} contains all the code and dependencies used to host this website. The history of each dependency's exact version is stored in a lockfile inside this repository. Also, the configuration behind my cluster is open source - {% a_blank 'https://github.com/jyooru/dotfiles/blob/main/LICENSE' 'view the license' %}.
 
 ## Building
 
 ## Hosting
 
-This website is hosted on my [cluster](/projects/cluster). All the code and dependencies behind my cluster can be found in my dotfiles, {% github_repository 'jyooru' 'dotfiles' %}. Here are some highlights, specific to hosting this website:
+This website is hosted on my <a href="{{ '/projects/cluster' | url }}">cluster</a>. All the code and dependencies behind my cluster can be found in my dotfiles, {% github_repository 'jyooru' 'dotfiles' %}. Here are some highlights, specific to hosting this website:
 
 - **Operating System Kernel**: Linux - {% a_blank_text 'https://kernel.org' %}
   <p>The Linux kernel is a free and open source operating system kernel. The kernel is a core component of an operating system, providing the most basic level of control over all of the computer's hardware. As Linux is free and open source, it can be tailored for any kind of computing scenario, from personal computers to servers to supercomputers. Each node in my cluster runs Linux.</p>
