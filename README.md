@@ -1,7 +1,7 @@
 # website
 
-my website, live at [https://joel.tokyo](https://joel.tokyo).
+Source code for my website, [joel.tokyo](https://joel.tokyo).
 
-## license
+## License
 
-see [license](./license) for details.
+See [LICENSE](LICENSE) for details.
