@@ -1,19 +1,13 @@
+---
+layout: blank
+---
+
 <!-- This is needed because the page layout's permalink causes issues inside 11ty with javascript files. -->
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% if title %}{{ title }} - {% endif %}joel.tokyo</title>
-    <link rel="stylesheet" href="/assets/style.css" />
-  </head>
-  <body class="terminal">
-    {% include nav %}
-    <main class="container">
-      {% if title %}
-      <h1>{{ title | upcase }}</h1>
-      {% endif %} {{ content | safe }}
-    </main>
-    {% include footer %}
-  </body>
-</html>
+
+{% include nav %}
+<main class="container">
+  {% if title %}
+  <h1>{{ title | upcase }}</h1>
+  {% endif %} {{ content | safe }}
+</main>
+{% include footer %}
