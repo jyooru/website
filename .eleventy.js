@@ -63,4 +63,6 @@ module.exports = function (eleventyConfig) {
     }
     return content;
   });
+
+  return { dir: { input: "src" } };
 };
