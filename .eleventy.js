@@ -28,6 +28,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addShortcode("comment", function (text) {
     return `<span class="comment">&lt;!-- ${text} --&gt;</span>`;
   });
+  eleventyConfig.addShortcode("generate_permalink", function (pageOutPath) {
+    return pageOutPath + ".html";
+  });
   eleventyConfig.addShortcode(
     "github_repository",
     function (username, repositoryName) {

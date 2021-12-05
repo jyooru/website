@@ -1,7 +1,7 @@
 const { readFileSync } = require("fs");
 
 exports.data = {
-  layout: "page",
+  layout: "pagejs",
   title: "keys",
 };
 
