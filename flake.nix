@@ -12,8 +12,7 @@
       let pkgs = import nixpkgs { inherit system; }; in
       {
         devShell = pkgs.mkShell {
-          packages = (with pkgs; [ nodejs ])
-            ++ (with pkgs.nodePackages; [ prettier ]);
+          packages = (with pkgs; [ nodejs ] ++ (with nodePackages; [ prettier ]));
         };
       }
     );
