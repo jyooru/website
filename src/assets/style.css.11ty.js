@@ -12,12 +12,12 @@ module.exports = class {
       eleventyExcludeFromCollections: true,
     };
   }
-  async render() {
+  async render(data) {
     const result = await renderSass({
       file: inputFile,
       includePaths: [
-        "node_modules/terminal.css/dist",
-        "node_modules/normalize.css",
+        `${data.path}/terminal.css/dist`,
+        `${data.path}/normalize.css`,
       ],
       outputStyle: "compressed",
     });
