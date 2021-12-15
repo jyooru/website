@@ -9,10 +9,39 @@
 
   outputs = { self, nixpkgs, flake-utils }:
     flake-utils.lib.eachDefaultSystem (system:
-      let pkgs = import nixpkgs { inherit system; }; in
+      let
+        pkgs = import nixpkgs { inherit system; };
+
+        nodePackages = with pkgs; stdenv.mkDerivation {
+          name = "node-packages";
+
+          src = lib.cleanSourceWith {
+            filter = (path: type:
+              type == "regular" &&
+              builtins.any (x: baseNameOf path == x) [ "package.json" "package-lock.json" ]
+            );
+            src = ./.;
+          };
+
+          nativeBuildInputs = [ pkgs.nodePackages.node2nix ];
+
+          buildPhase = ''
+            node2nix -d -l package-lock.json
+          '';
+
+          installPhase = ''
+            mkdir $out
+            cp ./* $out
+          '';
+        };
+        node = import nodePackages { inherit pkgs system; inherit (pkgs) nodejs; };
+      in
+      with pkgs;
       {
-        devShell = pkgs.mkShell {
-          packages = (with pkgs; [ nodejs ] ++ (with nodePackages; [ prettier ]));
+        devShell = node.shell;
+
+        packages = {
+          inherit nodePackages;
         };
       }
     );
