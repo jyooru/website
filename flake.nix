@@ -35,9 +35,26 @@
           '';
         };
         node = import nodePackages { inherit pkgs system; inherit (pkgs) nodejs; };
+        nodeScript = (script: pkgs.writeShellScriptBin
+          "node-script-${script}"
+          (builtins.replaceStrings
+            [ "exec ${pkgs.stdenv.shell}" ]
+            [ "exec ${pkgs.nodejs}/bin/npm run ${script}" ]
+            (builtins.readFile (toString node.shell + "/bin/shell"))
+          ) # there is definitely a better way to do this
+        );
+
+        inherit (node.args) name version;
       in
       with pkgs;
-      {
+      rec {
+        apps = builtins.listToAttrs (map (name: { inherit name; value = nodeScript name; }) [
+          "build"
+          "serve"
+          "watch"
+        ]);
+        defaultApp = apps.serve;
+
         devShell = node.shell;
 
         packages = {
