@@ -41,7 +41,7 @@
             [ "exec ${pkgs.stdenv.shell}" ]
             [ "exec ${pkgs.nodejs}/bin/npm run ${script}" ]
             (builtins.readFile (toString node.shell + "/bin/shell"))
-          ) # there is definitely a better way to do this
+          )
         );
 
         inherit (node.args) name version;
