@@ -2,12 +2,15 @@
   description = "Website development environment";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
-    flake-utils.inputs.nixpkgs.follows = "nixpkgs";
+    dotfiles.url = "github:jyooru/dotfiles";
   };
 
-  outputs = { self, nixpkgs, flake-utils }:
+  outputs = { self, dotfiles }:
+    let
+      flake-utils = dotfiles.inputs.flake-utils;
+      nixpkgs = dotfiles.inputs.nixpkgs;
+    in
+
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs { inherit system; };
