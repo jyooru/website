@@ -43,7 +43,7 @@ h5,
 h6 {
   position: relative;
   &::before {
-    color: var(--secondary-color);
+    color: var(--primary-color);
     font-weight: 600;
   }
   @media screen and (max-width: 1000px) {
