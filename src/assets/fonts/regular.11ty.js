@@ -12,6 +12,14 @@
 
 const generate = require("./generate");
 
-exports.render = function () {
-  return generate.generate("Regular");
+module.exports = class {
+  data() {
+    return {
+      permalink: "assets/fonts/regular.woff2",
+    };
+  }
+
+  render() {
+    return generate.generate("Regular");
+  }
 };
