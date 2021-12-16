@@ -8,7 +8,7 @@ module.exports = function (eleventyConfig) {
       ready: function (err, bs) {
         bs.addMiddleware("*", (req, res) => {
           // enable 404 page and trying {url}.html for eleventy --serve
-          alternativePath = `dist/${req.url}.html`;
+          alternativePath = `dist/${req._parsedOriginalUrl.pathname}.html`;
           var contentPath = "dist/404.html";
           if (fs.existsSync(alternativePath)) {
             contentPath = alternativePath;
