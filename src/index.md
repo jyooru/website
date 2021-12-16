@@ -9,9 +9,9 @@ title: Welcome
 
 Hi! My name is Joel, and I'm interested in the decentralised web, open source and privacy.
 
-## Protocols
+## Mirrors
 
-My site is accessible through a variety of different protocols or networks:
+This website is accessible over multiple different networks and protocols:
 
 - **HTTP**<br>{% a_blank_text 'https://joel.tokyo' %}
 - **IPFS** - {% a_blank_text 'https://ipfs.io' %} <br>{% a_blank_text 'ipns://joel.tokyo' %} {% comment 'TODO' %}
