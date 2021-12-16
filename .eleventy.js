@@ -21,7 +21,7 @@ module.exports = function (eleventyConfig) {
     },
   });
 
-  eleventyConfig.addWatchTarget("./src/assets/sass/");
+  eleventyConfig.addWatchTarget("./src/assets/");
 
   eleventyConfig.addShortcode("a_blank", function (link, text) {
     return `<a href="${link}" target="_blank" rel="noopener">${text}</a>`;
