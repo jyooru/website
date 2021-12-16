@@ -21,16 +21,14 @@ function convertNerdFontToWoff2(font, style) {
 }
 
 module.exports.createFunction = function (font, style) {
-  return function render() {
+  return async function render() {
     let cache = new AssetCache(`font-${font}-${style}`);
     if (cache.isCacheValid("2w")) {
       return cache.getCachedValue();
     }
 
-    let asset = convertNerdFontToWoff2(font, style);
-    asset.then((result) => {
-      cache.save(result);
-      return result;
-    });
+    let asset = await convertNerdFontToWoff2(font, style);
+    await cache.save(asset);
+    return asset;
   };
 };
