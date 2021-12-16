@@ -1,15 +1,4 @@
-// const Cache = require("@11ty/eleventy-cache-assets");
-// var ttf2woff2 = require("ttf2woff2");
-
-// exports.data = {
-//   pagination: { data: "fontStyles", size: 1 },
-//   fontStyles: ["Regular", "A", "b"],
-// };
-
-// exports.render = function (data) {
-//   return data.pagination.items.join("");
-// };
-
+const { AssetCache } = require("@11ty/eleventy-cache-assets");
 const generate = require("./generate");
 
 module.exports = class {
@@ -19,7 +8,16 @@ module.exports = class {
     };
   }
 
-  render() {
-    return generate.generate("Regular");
+  async render() {
+    let cache = new AssetCache("font_regular");
+    if (cache.isCacheValid("2w")) {
+      return cache.getCachedValue();
+    }
+
+    let asset = generate.generate("Regular");
+    asset.then((result) => {
+      cache.save(result);
+      return result;
+    });
   }
 };
