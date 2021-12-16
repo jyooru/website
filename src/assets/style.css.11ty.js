@@ -2,7 +2,7 @@ const util = require("util");
 const sass = require("sass");
 const renderSass = util.promisify(sass.render);
 
-const inputFile = "assets/sass/style.scss";
+const inputFile = "src/assets/sass/style.scss";
 const outputFile = "assets/style.css";
 
 module.exports = class {
@@ -12,10 +12,13 @@ module.exports = class {
       eleventyExcludeFromCollections: true,
     };
   }
-  async render() {
+  async render(data) {
     const result = await renderSass({
       file: inputFile,
-      includePaths: ["node_modules/terminal.css/dist"],
+      includePaths: [
+        `${data.path}/terminal.css/dist`,
+        `${data.path}/normalize.css`,
+      ],
       outputStyle: "compressed",
     });
 

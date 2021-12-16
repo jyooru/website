@@ -1,0 +1,13 @@
+---
+layout: blank
+---
+
+<!-- This is needed because the page layout's permalink causes issues inside 11ty with javascript files. -->
+
+{% include nav %}
+<main class="container">
+  {% if title %}
+  <h1>{{ title | upcase }}</h1>
+  {% endif %} {{ content | safe }}
+</main>
+{% include footer %}
