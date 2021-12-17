@@ -4,10 +4,7 @@ if (process.env.REPRODUCIBLE_BUILD == "1") {
 }
 
 const simpleGit = require("simple-git");
-const fs = require("fs");
-
 const git = simpleGit();
-const package = JSON.parse(fs.readFileSync("package.json"));
 
 module.exports = async function () {
   return {
