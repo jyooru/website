@@ -66,8 +66,6 @@
           installPhase = ''
             mkdir -p "$out/assets/fonts"
             cp -r dist/* "$out"
-            cp "${fontPath}/Fira Code Regular Nerd Font Complete.woff2" "$out/assets/fonts/fira-code-regular-nerd-font.woff2"
-            cp "${fontPath}/Fira Code Bold Nerd Font Complete.woff2" "$out/assets/fonts/fira-code-bold-nerd-font.woff2"
           '';
         };
       }
