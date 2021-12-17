@@ -12,7 +12,7 @@
       let
         pkgs = import nixpkgs {
           inherit system;
-          overlays = [ dotfiles.overlays.node-packages ];
+          overlays = [ dotfiles.overlays.nodePackages ];
         };
         packages = (with pkgs; [ git ]) ++ nodePackages;
         nodePackagesStrings = [
