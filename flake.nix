@@ -26,8 +26,18 @@
           ttf2woff2
         ]));
       in
+      with pkgs;
       rec {
-        devShell = pkgs.mkShell { inherit packages; };
+        apps = {
+          build = writeShellApplication { runtimeInputs = packages; name = "eleventy-build"; text = "eleventy"; };
+          serve = writeShellApplication { runtimeInputs = packages; name = "eleventy-serve"; text = "eleventy --serve"; };
+          watch = writeShellApplication { runtimeInputs = packages; name = "eleventy-watch"; text = "eleventy --watch"; };
+        };
+        defaultApp = apps.serve;
+
+        devShell = mkShell {
+          inherit packages;
+        };
       }
     );
 }
