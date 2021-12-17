@@ -14,8 +14,8 @@
           inherit system;
           overlays = [ dotfiles.overlays.node-packages ];
         };
-
-        packages = (with pkgs; [ git ] ++ (with nodePackages; [
+        packages = (with pkgs; [ git ] ++ nodeModules);
+        nodeModules = (with pkgs; with nodePackages; [
           nodePackages."normalize.css"
           nodePackages."@11ty/eleventy"
           nodePackages."@11ty/eleventy-cache-assets"
@@ -24,14 +24,15 @@
           simple-git
           nodePackages."terminal.css"
           ttf2woff2
-        ]));
+        ]);
+        nodePath = builtins.concatStringsSep ":" (map (x: toString x + "/lib/node_modules") nodeModules);
       in
       with pkgs;
       rec {
         apps = {
-          build = writeShellApplication { runtimeInputs = packages; name = "eleventy-build"; text = "eleventy"; };
-          serve = writeShellApplication { runtimeInputs = packages; name = "eleventy-serve"; text = "eleventy --serve"; };
-          watch = writeShellApplication { runtimeInputs = packages; name = "eleventy-watch"; text = "eleventy --watch"; };
+          build = writeShellApplication { runtimeInputs = packages; name = "eleventy-build"; text = "NODE_PATH=${nodePath} eleventy"; };
+          serve = writeShellApplication { runtimeInputs = packages; name = "eleventy-serve"; text = "NODE_PATH=${nodePath} eleventy --serve"; };
+          watch = writeShellApplication { runtimeInputs = packages; name = "eleventy-watch"; text = "NODE_PATH=${nodePath} eleventy --watch"; };
         };
         defaultApp = apps.serve;
 
