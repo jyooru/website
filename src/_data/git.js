@@ -1,3 +1,8 @@
+if (process.env.REPRODUCIBLE_BUILD == "1") {
+  // git data makes a build unreproducible, so it is not available
+  return;
+}
+
 const simpleGit = require("simple-git");
 const fs = require("fs");
 

@@ -48,7 +48,10 @@
 
           nativeBuildInputs = [ apps.build dotfiles.packages.${system}.nerdfonts-woff2-firacode ];
 
-          buildPhase = builtins.readFile (apps.build + "/bin/eleventy-build");
+          buildPhase = ''
+            export REPRODUCIBLE_BUILD=1
+            ${builtins.readFile (apps.build + "/bin/eleventy-build")}
+          '';
 
           installPhase = ''
             mkdir -p "$out"
