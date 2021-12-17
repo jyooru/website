@@ -29,14 +29,21 @@
         nodePath = builtins.concatStringsSep ":" (map (x: toString x + "/lib/node_modules") nodePackages);
         nodeModules = builtins.listToAttrs (map (name: { inherit name; value = toString (builtins.getAttr name pkgs.nodePackages) + "/lib/node_modules"; }) nodePackagesStrings);
         environmentVariables = "NODE_PATH=${nodePath} NODE_MODULES=${pkgs.lib.escapeShellArg (builtins.toJSON nodeModules)}";
+        fontPath = "${dotfiles.packages.${system}.nerdfonts-woff2-firacode}/share/fonts/NerdFonts/woff2";
       in
       with pkgs;
       rec {
-        apps = {
-          build = writeShellApplication { runtimeInputs = packages; name = "eleventy-build"; text = "${environmentVariables} eleventy"; };
-          serve = writeShellApplication { runtimeInputs = packages; name = "eleventy-serve"; text = "${environmentVariables} eleventy --serve"; };
-          watch = writeShellApplication { runtimeInputs = packages; name = "eleventy-watch"; text = "${environmentVariables} eleventy --watch"; };
-        };
+        apps = let prepareDistFolder = ''
+          rm -rf dist
+          mkdir -p "dist/assets/fonts"
+          cp "${fontPath}/Fira Code Regular Nerd Font Complete.woff2" "dist/assets/fonts/fira-code-regular-nerd-font.woff2"
+          cp "${fontPath}/Fira Code Bold Nerd Font Complete.woff2" "dist/assets/fonts/fira-code-bold-nerd-font.woff2"
+        ''; in
+          {
+            build = writeShellApplication { runtimeInputs = packages; name = "eleventy-build"; text = "${prepareDistFolder} ${environmentVariables} eleventy"; };
+            serve = writeShellApplication { runtimeInputs = packages; name = "eleventy-serve"; text = "${prepareDistFolder} ${environmentVariables} eleventy --serve"; };
+            watch = writeShellApplication { runtimeInputs = packages; name = "eleventy-watch"; text = "${prepareDistFolder} ${environmentVariables} eleventy --watch"; };
+          };
         defaultApp = apps.serve;
 
         devShell = mkShell {
@@ -56,13 +63,12 @@
             ${apps.build + "/bin/eleventy-build"}
           '';
 
-          installPhase = let fontPath = "${dotfiles.packages.${system}.nerdfonts-woff2-firacode}/share/fonts/NerdFonts/woff2"; in
-            ''
-              mkdir -p "$out/assets/fonts"
-              cp -r dist/* "$out"
-              cp "${fontPath}/Fira Code Regular Nerd Font Complete.woff2" "$out/assets/fonts/fira-code-regular-nerd-font.woff2"
-              cp "${fontPath}/Fira Code Bold Nerd Font Complete.woff2" "$out/assets/fonts/fira-code-bold-nerd-font.woff2"
-            '';
+          installPhase = ''
+            mkdir -p "$out/assets/fonts"
+            cp -r dist/* "$out"
+            cp "${fontPath}/Fira Code Regular Nerd Font Complete.woff2" "$out/assets/fonts/fira-code-regular-nerd-font.woff2"
+            cp "${fontPath}/Fira Code Bold Nerd Font Complete.woff2" "$out/assets/fonts/fira-code-bold-nerd-font.woff2"
+          '';
         };
       }
     );
