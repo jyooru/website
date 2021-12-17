@@ -16,12 +16,5 @@ module.exports = async function () {
       short: await git.revparse(["--short", "--verify", "HEAD"]),
       long: await git.revparse(["--verify", "HEAD"]),
     },
-    repository: package.repository.url
-      .replace("git+https://", "")
-      .replace("github.com/", "github:")
-      .replace(".git", ""),
-    repositoryURL: package.repository.url
-      .replace("git+", "")
-      .replace(".git", ""),
   };
 };
