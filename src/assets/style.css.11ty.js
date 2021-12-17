@@ -16,8 +16,8 @@ module.exports = class {
     const result = await renderSass({
       file: inputFile,
       includePaths: [
-        `${data.env.nodePathSet["terminal.css"]}/terminal.css/dist`,
-        `${data.env.nodePathSet["normalize.css"]}/normalize.css`,
+        `${data.env.nodeModules["terminal.css"]}/terminal.css/dist`,
+        `${data.env.nodeModules["normalize.css"]}/normalize.css`,
       ],
       outputStyle: "compressed",
     });

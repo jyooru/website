@@ -14,8 +14,8 @@
           inherit system;
           overlays = [ dotfiles.overlays.node-packages ];
         };
-        packages = (with pkgs; [ git ] ++ nodeModules);
-        rawNodeModules = [
+        packages = (with pkgs; [ git ]) ++ nodePackages;
+        nodePackagesStrings = [
           "normalize.css"
           "@11ty/eleventy"
           "@11ty/eleventy-cache-assets"
@@ -25,10 +25,10 @@
           "terminal.css"
           "ttf2woff2"
         ];
-        nodeModules = map (x: builtins.getAttr x pkgs.nodePackages) rawNodeModules;
-        nodePath = builtins.concatStringsSep ":" (map (x: toString x + "/lib/node_modules") nodeModules);
-        nodePathSet = builtins.listToAttrs (map (name: { inherit name; value = toString (builtins.getAttr name pkgs.nodePackages) + "/lib/node_modules"; }) rawNodeModules);
-        environmentVariables = "NODE_PATH=${nodePath} NODE_PATH_SET=${pkgs.lib.escapeShellArg (builtins.toJSON nodePathSet)}";
+        nodePackages = map (x: builtins.getAttr x pkgs.nodePackages) nodePackagesStrings;
+        nodePath = builtins.concatStringsSep ":" (map (x: toString x + "/lib/node_modules") nodePackages);
+        nodeModules = builtins.listToAttrs (map (name: { inherit name; value = toString (builtins.getAttr name pkgs.nodePackages) + "/lib/node_modules"; }) nodePackagesStrings);
+        environmentVariables = "NODE_PATH=${nodePath} NODE_MODULES=${pkgs.lib.escapeShellArg (builtins.toJSON nodeModules)}";
       in
       with pkgs;
       rec {
