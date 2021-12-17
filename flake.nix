@@ -39,6 +39,23 @@
         devShell = mkShell {
           inherit packages;
         };
+
+        defaultPackage = stdenv.mkDerivation {
+          pname = "website";
+          version = "2.1.0";
+
+          src = ./.;
+
+          nativeBuildInputs = [ apps.build dotfiles.packages.${system}.nerdfonts-woff2-firacode ];
+
+          buildPhase = builtins.readFile (apps.build + "/bin/eleventy-build");
+
+          installPhase = ''
+            mkdir -p "$out"
+            cp -r dist/* "$out"
+            cp -r "${dotfiles.packages.${system}.nerdfonts-woff2-firacode}/share/fonts/NerdFonts/woff2" "$out/fonts/"
+          '';
+        };
       }
     );
 }
