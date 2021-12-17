@@ -29,11 +29,11 @@
         "nur": "nur"
       },
       "locked": {
-        "lastModified": 1639661212,
-        "narHash": "sha256-PnZZsBdacLUS+l0Fb9pn14jJw6GDm144mk+tEGVQ3Hs=",
+        "lastModified": 1639725549,
+        "narHash": "sha256-q4w9MrTJWwm4KwYcB7U1iZGeF/Nf06mkUQg/u7XOw4c=",
         "owner": "jyooru",
         "repo": "dotfiles",
-        "rev": "d21abe8ef3a9eb885d7e6cac5405cb92152f6805",
+        "rev": "708c901859be23a4841eac168a13f0559b5f1918",
         "type": "github"
       },
       "original": {
