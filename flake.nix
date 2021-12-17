@@ -53,7 +53,7 @@
 
           buildPhase = ''
             export REPRODUCIBLE_BUILD=1
-            ${builtins.readFile (apps.build + "/bin/eleventy-build")}
+            ${apps.build + "/bin/eleventy-build"}
           '';
 
           installPhase = let fontPath = "${dotfiles.packages.${system}.nerdfonts-woff2-firacode}/share/fonts/NerdFonts/woff2"; in
