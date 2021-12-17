@@ -15,24 +15,27 @@
           overlays = [ dotfiles.overlays.node-packages ];
         };
         packages = (with pkgs; [ git ] ++ nodeModules);
-        nodeModules = (with pkgs; with nodePackages; [
-          nodePackages."normalize.css"
-          nodePackages."@11ty/eleventy"
-          nodePackages."@11ty/eleventy-cache-assets"
-          html-minifier
-          sass
-          simple-git
-          nodePackages."terminal.css"
-          ttf2woff2
-        ]);
+        rawNodeModules = [
+          "normalize.css"
+          "@11ty/eleventy"
+          "@11ty/eleventy-cache-assets"
+          "html-minifier"
+          "sass"
+          "simple-git"
+          "terminal.css"
+          "ttf2woff2"
+        ];
+        nodeModules = map (x: builtins.getAttr x pkgs.nodePackages) rawNodeModules;
         nodePath = builtins.concatStringsSep ":" (map (x: toString x + "/lib/node_modules") nodeModules);
+        nodePathSet = builtins.listToAttrs (map (name: { inherit name; value = toString (builtins.getAttr name pkgs.nodePackages) + "/lib/node_modules"; }) rawNodeModules);
+        environmentVariables = "NODE_PATH=${nodePath} NODE_PATH_SET=${pkgs.lib.escapeShellArg (builtins.toJSON nodePathSet)}";
       in
       with pkgs;
       rec {
         apps = {
-          build = writeShellApplication { runtimeInputs = packages; name = "eleventy-build"; text = "NODE_PATH=${nodePath} eleventy"; };
-          serve = writeShellApplication { runtimeInputs = packages; name = "eleventy-serve"; text = "NODE_PATH=${nodePath} eleventy --serve"; };
-          watch = writeShellApplication { runtimeInputs = packages; name = "eleventy-watch"; text = "NODE_PATH=${nodePath} eleventy --watch"; };
+          build = writeShellApplication { runtimeInputs = packages; name = "eleventy-build"; text = "${environmentVariables} eleventy"; };
+          serve = writeShellApplication { runtimeInputs = packages; name = "eleventy-serve"; text = "${environmentVariables} eleventy --serve"; };
+          watch = writeShellApplication { runtimeInputs = packages; name = "eleventy-watch"; text = "${environmentVariables} eleventy --watch"; };
         };
         defaultApp = apps.serve;
 
