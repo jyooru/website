@@ -57,9 +57,9 @@
           '';
 
           installPhase = ''
-            mkdir -p "$out"
+            mkdir -p "$out/assets/fonts"
             cp -r dist/* "$out"
-            cp -r "${dotfiles.packages.${system}.nerdfonts-woff2-firacode}/share/fonts/NerdFonts/woff2" "$out/fonts/"
+            cp -r ${dotfiles.packages.${system}.nerdfonts-woff2-firacode}/share/fonts/NerdFonts/woff2/* "$out/assets/fonts/"
           '';
         };
       }
