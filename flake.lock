@@ -154,7 +154,15 @@
     },
     "root": {
       "inputs": {
-        "dotfiles": "dotfiles"
+        "dotfiles": "dotfiles",
+        "flake-utils": [
+          "dotfiles",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "dotfiles",
+          "nixpkgs"
+        ]
       }
     },
     "utils": {

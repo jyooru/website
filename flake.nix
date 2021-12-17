@@ -3,14 +3,11 @@
 
   inputs = {
     dotfiles.url = "github:jyooru/dotfiles";
+    flake-utils.follows = "dotfiles/flake-utils";
+    nixpkgs.follows = "dotfiles/nixpkgs";
   };
 
-  outputs = { self, dotfiles }:
-    let
-      flake-utils = dotfiles.inputs.flake-utils;
-      nixpkgs = dotfiles.inputs.nixpkgs;
-    in
-
+  outputs = { self, dotfiles, flake-utils, nixpkgs }:
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs {
