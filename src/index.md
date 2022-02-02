@@ -3,7 +3,7 @@ layout: page
 title: Welcome
 ---
 
-{% comment 'This website is still under heavy construction.' %}
+{% comment 'This website is still under construction.' %}
 
 ## About
 

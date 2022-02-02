@@ -3,6 +3,10 @@ const htmlmin = require("html-minifier");
 const path = require("path");
 
 module.exports = function (eleventyConfig) {
+  eleventyConfig.setLiquidOptions({
+    dynamicPartials: false, // everything breaks
+  });
+
   eleventyConfig.setBrowserSyncConfig({
     callbacks: {
       ready: function (err, bs) {

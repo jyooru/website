@@ -8,66 +8,66 @@
   };
 
   outputs = { self, dotfiles, flake-utils, nixpkgs }:
-    flake-utils.lib.eachDefaultSystem (system:
+    flake-utils.lib.eachSystem [ "x86_64-linux" ] (system:
       let
+        inherit (builtins) concatStringsSep getAttr listToAttrs toJSON;
+
         pkgs = import nixpkgs {
           inherit system;
           overlays = [ dotfiles.overlays.nodePackages ];
         };
-        packages = (with pkgs; [ git ]) ++ nodePackages;
-        nodePackagesStrings = [
-          "normalize.css"
+        nodePackagesNames = [
           "@11ty/eleventy"
-          "@11ty/eleventy-cache-assets"
           "html-minifier"
+          "normalize.css"
           "sass"
-          "simple-git"
           "terminal.css"
-          "ttf2woff2"
         ];
-        nodePackages = map (x: builtins.getAttr x pkgs.nodePackages) nodePackagesStrings;
-        nodePath = builtins.concatStringsSep ":" (map (x: toString x + "/lib/node_modules") nodePackages);
-        nodeModules = builtins.listToAttrs (map (name: { inherit name; value = toString (builtins.getAttr name pkgs.nodePackages) + "/lib/node_modules"; }) nodePackagesStrings);
-        environmentVariables = "NODE_PATH=${nodePath} NODE_MODULES=${pkgs.lib.escapeShellArg (builtins.toJSON nodeModules)}";
+        nodePackages = map (x: getAttr x pkgs.nodePackages) nodePackagesNames;
+
+        shellHook = ''
+          export NODE_PATH=${concatStringsSep ":" (map (x: toString x + "/lib/node_modules") nodePackages)}
+          export NODE_MODULES=${pkgs.lib.escapeShellArg (toJSON (listToAttrs (map (name: { inherit name; value = toString (getAttr name pkgs.nodePackages) + "/lib/node_modules"; }) nodePackagesNames)))}
+        '';
         fontPath = "${dotfiles.packages.${system}.nerdfonts-woff2-firacode}/share/fonts/NerdFonts/woff2";
-      in
-      with pkgs;
-      rec {
-        apps = let prepareDistFolder = ''
-          rm -rf dist
+        preBuild = ''
+          ${shellHook}
+
+          [ -e dist ] && rm -rf dist
           mkdir -p "dist/assets/fonts"
           cp "${fontPath}/Fira Code Regular Nerd Font Complete.woff2" "dist/assets/fonts/fira-code-regular-nerd-font.woff2"
           cp "${fontPath}/Fira Code Bold Nerd Font Complete.woff2" "dist/assets/fonts/fira-code-bold-nerd-font.woff2"
-        ''; in
-          {
-            build = writeShellApplication { runtimeInputs = packages; name = "eleventy-build"; text = "${prepareDistFolder} ${environmentVariables} eleventy"; };
-            serve = writeShellApplication { runtimeInputs = packages; name = "eleventy-serve"; text = "${prepareDistFolder} ${environmentVariables} eleventy --serve"; };
-            watch = writeShellApplication { runtimeInputs = packages; name = "eleventy-watch"; text = "${prepareDistFolder} ${environmentVariables} eleventy --watch"; };
-          };
+        '';
+      in
+      with pkgs;
+      rec {
+        apps.serve = writeShellApplication { runtimeInputs = nodePackages; name = "serve"; text = "${preBuild} eleventy --serve"; };
         defaultApp = apps.serve;
 
         devShell = mkShell {
-          inherit packages;
+          packages = nodePackages;
+          inherit shellHook;
         };
 
-        defaultPackage = stdenv.mkDerivation {
+        packages.website = stdenv.mkDerivation {
           pname = "website";
           version = "2.1.0";
 
           src = ./.;
 
-          nativeBuildInputs = [ apps.build dotfiles.packages.${system}.nerdfonts-woff2-firacode ];
+          nativeBuildInputs = nodePackages;
 
           buildPhase = ''
-            export REPRODUCIBLE_BUILD=1
-            ${apps.build + "/bin/eleventy-build"}
+            ${preBuild}
+            eleventy
           '';
 
           installPhase = ''
-            mkdir -p "$out/assets/fonts"
+            mkdir $out
             cp -r dist/* "$out"
           '';
         };
+        defaultPackage = packages.website;
       }
     );
 }

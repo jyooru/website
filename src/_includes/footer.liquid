@@ -6,26 +6,6 @@
           > {{ config.repository.text }}</a
         >
       </li>
-      {% if env.reproducibleBuild != true %}
-      <li>
-        <a
-          href="{{ config.repository.url }}/commit/{{ git.commit.long }}"
-          target="_blank"
-          rel="noopener"
-        >
-           {{ git.commit.short }}</a
-        >
-      </li>
-      <li>
-        <a
-          href="{{ config.repository.url }}/blob/{{ git.commit.long }}/{{
-            page.inputPath | url
-          }}"
-          > {{ page.inputPath | get_extension }}</a
-        >
-      </li>
-      <li> {% now %} UTC</li>
-      {% endif %}
     </ul>
   </div>
 </footer>
