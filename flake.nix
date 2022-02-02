@@ -19,12 +19,9 @@
         nodePackagesNames = [
           "normalize.css"
           "@11ty/eleventy"
-          "@11ty/eleventy-cache-assets"
           "html-minifier"
           "sass"
-          "simple-git"
           "terminal.css"
-          "ttf2woff2"
         ];
         nodePackages = map (x: getAttr x pkgs.nodePackages) nodePackagesNames;
 
