@@ -17,9 +17,9 @@
           overlays = [ dotfiles.overlays.nodePackages ];
         };
         nodePackagesNames = [
-          "normalize.css"
           "@11ty/eleventy"
           "html-minifier"
+          "normalize.css"
           "sass"
           "terminal.css"
         ];
