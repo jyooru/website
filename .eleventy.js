@@ -2,11 +2,13 @@ const fs = require("fs");
 const htmlmin = require("html-minifier");
 const path = require("path");
 
+const removeExtension = function (string) {
+  let parsed = path.parse(string);
+  return path.join(parsed.dir, parsed.name);
+};
+
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addFilter("remove_extension", function (string) {
-    let parsed = path.parse(string);
-    return path.join(parsed.dir, parsed.name);
-  });
+  eleventyConfig.addFilter("remove_extension", removeExtension);
 
   eleventyConfig.addShortcode("a_blank", function (link, text) {
     return `<a href="${link}" target="_blank" rel="noopener">${text}</a>`;
@@ -16,6 +18,17 @@ module.exports = function (eleventyConfig) {
   });
   eleventyConfig.addShortcode("comment", function (text) {
     return `<span class="comment">&lt;!-- ${text} --&gt;</span>`;
+  });
+  eleventyConfig.addShortcode("nav_path", function (path) {
+    path = removeExtension(path).split("/");
+    length = path.length - 1; // "/" == 1; "/a == 2;
+    if (path.length == 1) {
+      return "/";
+    } else if (path.length == 2) {
+      return "/" + path[1];
+    } else {
+      return `/${path[1][0]}/${path[2]}`;
+    }
   });
   eleventyConfig.addShortcode("generate_permalink", function (pageOutPath) {
     return pageOutPath + ".html";
