@@ -10,7 +10,7 @@
   outputs = { self, dotfiles, flake-utils, nixpkgs }:
     flake-utils.lib.eachSystem [ "x86_64-linux" ] (system:
       let
-        inherit (builtins) attrValues concatStringsSep getAttr listToAttrs mapAttrs toJSON;
+        inherit (builtins) attrValues concatStringsSep getAttr listToAttrs mapAttrs toFile toJSON;
 
         pkgs = import nixpkgs {
           inherit system;
@@ -31,6 +31,23 @@
       in
       with pkgs;
       rec {
+        defaultApp = apps.server;
+        apps.server =
+          let
+            config = toFile "Caddyfile" ''
+              :8080 {
+                root result
+                file_server
+                try_files {path} {path}.html {path}/
+              }
+            '';
+          in
+          writeShellApplication {
+            runtimeInputs = [ caddy ];
+            name = "server";
+            text = "caddy run -adapter caddyfile -config ${config}";
+          };
+
         devShell = mkShell {
           packages = nodePackages;
           inherit NODE_PATH NODE_MODULES;
