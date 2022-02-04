@@ -9,7 +9,6 @@ let
   system = currentSystem;
 in
 {
-  apps = recurseIntoAttrs flake.apps.${system};
   devShell = flake.devShell.${system};
   packages = recurseIntoAttrs flake.packages.${system};
 }
