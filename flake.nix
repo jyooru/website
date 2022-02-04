@@ -10,64 +10,63 @@
   outputs = { self, dotfiles, flake-utils, nixpkgs }:
     flake-utils.lib.eachSystem [ "x86_64-linux" ] (system:
       let
-        inherit (builtins) concatStringsSep getAttr listToAttrs toJSON;
+        inherit (builtins) attrValues concatStringsSep getAttr listToAttrs mapAttrs toJSON;
 
         pkgs = import nixpkgs {
           inherit system;
           overlays = [ dotfiles.overlays.nodePackages ];
         };
-        nodePackagesNames = [
+
+        nodePackageSet = listToAttrs (map (name: { inherit name; value = getAttr name pkgs.nodePackages; }) [
           "@11ty/eleventy"
           "html-minifier"
           "normalize.css"
           "sass"
           "terminal.css"
-        ];
-        nodePackages = map (x: getAttr x pkgs.nodePackages) nodePackagesNames;
-
-        shellHook = ''
-          export NODE_PATH=${concatStringsSep ":" (map (x: toString x + "/lib/node_modules") nodePackages)}
-          export NODE_MODULES=${pkgs.lib.escapeShellArg (toJSON (listToAttrs (map (name: { inherit name; value = toString (getAttr name pkgs.nodePackages) + "/lib/node_modules"; }) nodePackagesNames)))}
-        '';
-        fontPath = "${dotfiles.packages.${system}.nerdfonts-woff2-firacode}/share/fonts/NerdFonts/woff2";
-        preBuild = ''
-          ${shellHook}
-
-          [ -e dist ] && rm -rf dist
-          mkdir -p "dist/assets/fonts"
-          cp "${fontPath}/Fira Code Regular Nerd Font Complete.woff2" "dist/assets/fonts/fira-code-regular-nerd-font.woff2"
-          cp "${fontPath}/Fira Code Bold Nerd Font Complete.woff2" "dist/assets/fonts/fira-code-bold-nerd-font.woff2"
-        '';
+        ]);
+        nodePackages = attrValues nodePackageSet;
+        nodeModules = mapAttrs (_: value: "${value}/lib/node_modules") nodePackageSet;
+        NODE_MODULES = toJSON nodeModules;
+        NODE_PATH = concatStringsSep ":" (attrValues nodeModules);
       in
       with pkgs;
       rec {
-        apps.serve = writeShellApplication { runtimeInputs = nodePackages; name = "serve"; text = "${preBuild} eleventy --serve"; };
-        defaultApp = apps.serve;
-
         devShell = mkShell {
           packages = nodePackages;
-          inherit shellHook;
+          inherit NODE_PATH NODE_MODULES;
         };
 
-        packages.website = stdenv.mkDerivation {
-          pname = "website";
-          version = "2.1.0";
-
-          src = ./.;
-
-          nativeBuildInputs = nodePackages;
-
-          buildPhase = ''
-            ${preBuild}
-            eleventy
-          '';
-
-          installPhase = ''
-            mkdir $out
-            cp -r dist/* "$out"
-          '';
-        };
         defaultPackage = packages.website;
+        packages.website =
+          let
+            srcs = {
+              fonts = "${dotfiles.packages.${system}.nerdfonts-woff2-firacode}/share/fonts/NerdFonts/woff2";
+              website = ./.;
+            };
+          in
+          stdenv.mkDerivation {
+            pname = "website";
+            version = "2.1.0";
+
+            src = srcs.website;
+
+            inherit NODE_PATH NODE_MODULES;
+
+            nativeBuildInputs = nodePackages;
+
+            buildPhase = ''
+              mkdir -p src/assets/fonts
+              cp "${srcs.fonts}/Fira Code Regular Nerd Font Complete.woff2" src/assets/fonts/fira-code-regular-nerd-font.woff2
+              cp "${srcs.fonts}/Fira Code Bold Nerd Font Complete.woff2" src/assets/fonts/fira-code-bold-nerd-font.woff2
+
+              eleventy
+            '';
+
+            installPhase = ''
+              mkdir $out
+              cp -r dist/* $out
+            '';
+          };
       }
     );
 }
