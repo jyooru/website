@@ -2,7 +2,7 @@
   description = "Website development environment";
 
   inputs = {
-    dotfiles.url = "github:jyooru/dotfiles";
+    dotfiles.url = "github:jyooru/dotfiles/docs";
     flake-utils.follows = "dotfiles/flake-utils";
     nixpkgs.follows = "dotfiles/nixpkgs";
   };

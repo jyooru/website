@@ -117,15 +117,16 @@
         "nur": "nur"
       },
       "locked": {
-        "lastModified": 1643776198,
-        "narHash": "sha256-uO3BVqSw8z/i+pPxTLU0ThfzMY8tSoUksXmv3txgbsA=",
+        "lastModified": 1643949645,
+        "narHash": "sha256-zTVhWx7qYEGQOub2w+QDQyhLjsm1prcnHPlFEFILPjI=",
         "owner": "jyooru",
         "repo": "dotfiles",
-        "rev": "1107ac1520f56384c677d889100da604d70de616",
+        "rev": "768c2bd60068cd05e5b749e7b516b2eb0fecc2f9",
         "type": "github"
       },
       "original": {
         "owner": "jyooru",
+        "ref": "docs",
         "repo": "dotfiles",
         "type": "github"
       }
