@@ -40,6 +40,7 @@
         packages.website =
           let
             srcs = {
+              dotfiles = dotfiles.packages.${system}.docs-src;
               fonts = "${dotfiles.packages.${system}.nerdfonts-woff2-firacode}/share/fonts/NerdFonts/woff2";
               website = ./.;
             };
@@ -58,6 +59,9 @@
               mkdir -p src/assets/fonts
               cp "${srcs.fonts}/Fira Code Regular Nerd Font Complete.woff2" src/assets/fonts/fira-code-regular-nerd-font.woff2
               cp "${srcs.fonts}/Fira Code Bold Nerd Font Complete.woff2" src/assets/fonts/fira-code-bold-nerd-font.woff2
+
+              mkdir -p src/projects
+              cp -r ${srcs.dotfiles} src/projects/dotfiles
 
               eleventy
             '';

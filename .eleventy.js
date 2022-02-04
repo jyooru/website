@@ -40,7 +40,9 @@ module.exports = function (eleventyConfig) {
     }
   });
 
+  eleventyConfig.addPassthroughCopy("src/projects/dotfiles");
   eleventyConfig.addPassthroughCopy("src/assets/fonts/*.woff2");
+
   eleventyConfig.addWatchTarget("./src/assets/");
 
   eleventyConfig.setBrowserSyncConfig({
