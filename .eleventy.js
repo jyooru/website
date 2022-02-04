@@ -75,5 +75,7 @@ module.exports = function (eleventyConfig) {
     return content;
   });
 
+  eleventyConfig.addPassthroughCopy("src/assets/fonts/*.woff2");
+
   return { dir: { input: "./src", output: "./dist" } };
 };
