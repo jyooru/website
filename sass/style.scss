@@ -2,13 +2,6 @@
 @import "_headings";
 @import "_terminal";
 
-:root {
-  --font-stack: FiraCode Nerd Font, Menlo, Monaco, Lucida Console,
-    Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New,
-    monospace, serif;
-  --mono-font-stack: var(--font-stack);
-}
-
 .terminal-command,
 .terminal-menu li {
   color: var(--secondary-color);
