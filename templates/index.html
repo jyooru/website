@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="container">
+  <div class="terminal-nav">
+    <header class="terminal-logo">
+      <div class="logo terminal-prompt">
+        <a href="/" class="no-style">joel.tokyo:/$ </a>
+        <span class="terminal-command">cd&nbsp;</span>
+      </div>
+    </header>
+    <div class="terminal-menu">
+      <nav>
+        <ul>
+          <li><a href="/" class="menu-item">/</a></li>
+          <li><a href="/projects" class="menu-item">/projects</a></li>
+          <li><a href="/status" class="menu-item">/status</a></li>
+          <li><a href="/keys/" class="menu-item">/keys</a></li>
+          <li><a href="/contact" class="menu-item">/contact</a></li>
+          <li>
+            <a href="/credits" class="menu-item">/credits</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<main class="container">
+  {% block content %}
+  <h1>WELCOME</h1>
+  <h2>About</h2>
+  <p>Hi! My name is Joel, and I'm interested in the decentralised web, open source and privacy.</p>
+  <h2>Protocols</h2>
+  <p>My site is accessible through a variety of different protocols or networks:</p>
+  <ul>
+    <li><strong>HTTP</strong><br><a href="https://joel.tokyo" target="_blank" rel="noopener">https://joel.tokyo</a>
+    </li>
+    <li><strong>IPFS</strong> - <a href="https://ipfs.io" target="_blank" rel="noopener">https://ipfs.io</a><br><a
+        href="ipns://joel.tokyo" target="_blank" rel="noopener">ipns://joel.tokyo</a> <span class="comment">&lt;!--
+        TODO --&gt;</span></li>
+    <li><strong>Tor</strong> - <a href="https://torproject.org" target="_blank"
+        rel="noopener">https://torproject.org</a><br><a
+        href="http://joeljxdrgykbsnsbjljtjbkmpqzxbzttyzrtmsbmvbfsjigkwmmnchid.onion" target="_blank"
+        rel="noopener">http://joeljxdrgykbsnsbjljtjbkmpqzxbzttyzrtmsbmvbfsjigkwmmnchid.onion</a> <span
+        class="comment">&lt;!-- TODO --&gt;</span></li>
+    <li><strong>I2P</strong> - <a href="https://geti2p.net" target="_blank" rel="noopener">https://geti2p.net</a><br><a
+        href="http://udhdrtrcetjm5sxzskjyr5ztpeszydbh4dpl3pl4utgqqw2v4jna.b32.i2p" target="_blank"
+        rel="noopener">http://udhdrtrcetjm5sxzskjyr5ztpeszydbh4dpl3pl4utgqqw2v4jna.b32.i2p</a> <span
+        class="comment">&lt;!-- TODO --&gt;</span></li>
+  </ul>
+  {% endblock %}
+</main>
+{% endblock %}

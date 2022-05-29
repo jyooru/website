@@ -1,6 +1,6 @@
 ---
-layout: page
-title: Credits
+title: credits
+layout: page.html
 ---
 
 We live in a world where most people have no idea how important open source is to our everyday lives. This page mentions the software I depend on to build and host this website. I hope that it highlights the importance of open source, especially considering this website is a microscopic part of the content available on the internet and yet it still depends on so many people and their work.

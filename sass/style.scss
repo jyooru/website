@@ -1,9 +1,6 @@
-@import "normalize"; // node_modules/normalize.css/normalize.css
-@import "terminal"; // node_modules/terminal.css/dist/terminal.css
-
 @import "_colors";
 @import "_headings";
-@import "../fonts/style.scss";
+@import "_terminal";
 
 :root {
   --font-stack: FiraCode Nerd Font, Menlo, Monaco, Lucida Console,
