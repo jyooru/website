@@ -33,15 +33,6 @@
   }
 }
 
-.terminal-nav:hover {
-  .terminal-command {
-    color: var(--font-color);
-  }
-  .terminal-prompt::after {
-    animation: cursor 1.5s step-start infinite;
-  }
-}
-
 main {
   min-height: calc(100vh - (61px * 2));
 }

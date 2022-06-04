@@ -5,21 +5,14 @@
   <div class="terminal-nav">
     <header class="terminal-logo">
       <div class="logo terminal-prompt">
-        <a href="/" class="no-style">joel.tokyo:/$ </a>
-        <span class="terminal-command">cd&nbsp;</span>
+        <a href="/" class="no-style">{{ config.title }}</a>
       </div>
     </header>
     <div class="terminal-menu">
       <nav>
         <ul>
-          <li><a href="/" class="menu-item">/</a></li>
-          <li><a href="/projects" class="menu-item">/projects</a></li>
-          <li><a href="/status" class="menu-item">/status</a></li>
-          <li><a href="/keys/" class="menu-item">/keys</a></li>
-          <li><a href="/contact" class="menu-item">/contact</a></li>
-          <li>
-            <a href="/credits" class="menu-item">/credits</a>
-          </li>
+          <li><a href="/pins" class="menu-item">~/pins</a></li>
+          <li><a href="/projects" class="menu-item">~/projects</a></li>
         </ul>
       </nav>
     </div>
@@ -28,26 +21,75 @@
 
 <main class="container">
   {% block content %}
-  <h1>WELCOME</h1>
-  <h2>About</h2>
-  <p>Hi! My name is Joel, and I'm interested in the decentralised web, open source and privacy.</p>
-  <h2>Protocols</h2>
-  <p>My site is accessible through a variety of different protocols or networks:</p>
+  <!-- ../content/i.md -->
+  <header>
+    <h1>hi! i'm joel.</h1>
+  </header>
+  <p>
+    I'm a teenage developer interested in applications of the
+    <a href="https://en.wikipedia.org/wiki/Open_source">open source</a> and
+    <a href="https://en.wikipedia.org/wiki/Peer-to-peer">peer-to-peer</a> models
+    to both software and daily life. I spend most of my time coding in
+    <a href="https://python.org/">Python</a> and
+    <a href="https://rust-lang.org/">Rust</a> as well as working with
+    technologies such as <a href="https://ipfs.io/">IPFS</a> and
+    <a href="https://nixos.org/">Nix</a>. I'm also the kind of person who spends
+    multiple days automating a few minutes worth of manual work.
+  </p>
+  <p>
+    This website is my home on the decentralised web. I use it to publish
+    information about me, <a href="/pins">my pins</a> and
+    <a href="/projects">my projects</a>. It's built purely using open source
+    software and is hosted on the peer-to-peer
+    <a href="https://ipfs.io">IPFS network</a>. You can access it using
+    <a href="https://blog.cloudflare.com/distributed-web-gateway/">Cloudflare's IPFS Gateway</a>
+    from <a href="https://joel.tokyo">https://joel.tokyo</a>, or if you
+    <a href="https://docs.ipfs.io/">participate in the network</a> from
+    <a href="ipns://joel.tokyo">ipns://joel.tokyo</a>. It's also available in a
+    completely decentralised manner without any intermediaries using
+    <a href="https://ens.domains/">ENS</a> from
+    <a href="ipns://jyooru.eth">ipns://jyooru.eth</a>.
+  </p>
+  <h3 id="accounts">accounts</h3>
   <ul>
-    <li><strong>HTTP</strong><br><a href="https://joel.tokyo" target="_blank" rel="noopener">https://joel.tokyo</a>
+    <li>
+      <a href="https://discord.com/users/636543487600492545">discord:joel#0404</a>
     </li>
-    <li><strong>IPFS</strong> - <a href="https://ipfs.io" target="_blank" rel="noopener">https://ipfs.io</a><br><a
-        href="ipns://joel.tokyo" target="_blank" rel="noopener">ipns://joel.tokyo</a> <span class="comment">&lt;!--
-        TODO --&gt;</span></li>
-    <li><strong>Tor</strong> - <a href="https://torproject.org" target="_blank"
-        rel="noopener">https://torproject.org</a><br><a
-        href="http://joeljxdrgykbsnsbjljtjbkmpqzxbzttyzrtmsbmvbfsjigkwmmnchid.onion" target="_blank"
-        rel="noopener">http://joeljxdrgykbsnsbjljtjbkmpqzxbzttyzrtmsbmvbfsjigkwmmnchid.onion</a> <span
-        class="comment">&lt;!-- TODO --&gt;</span></li>
-    <li><strong>I2P</strong> - <a href="https://geti2p.net" target="_blank" rel="noopener">https://geti2p.net</a><br><a
-        href="http://udhdrtrcetjm5sxzskjyr5ztpeszydbh4dpl3pl4utgqqw2v4jna.b32.i2p" target="_blank"
-        rel="noopener">http://udhdrtrcetjm5sxzskjyr5ztpeszydbh4dpl3pl4utgqqw2v4jna.b32.i2p</a> <span
-        class="comment">&lt;!-- TODO --&gt;</span></li>
+    <li><a href="https://github.com/jyooru">github:jyooru</a></li>
+    <li><a href="https://pypi.org/user/jyooru/">pypi:jyooru</a></li>
+  </ul>
+  <h3 id="addresses">addresses</h3>
+  <ul>
+    <li>
+      <a href="ethereum://jyooru.eth">ethereum:jyooru.eth</a> -&gt;
+      <a
+        href="ethereum://0x4040D08BCB16201797F04990e57e49AFE6fc3CE1">ethereum:0x4040D08BCB16201797F04990e57e49AFE6fc3CE1</a>
+    </li>
+    <li>
+      <a
+        href="nano://nano_3jyoorubjojjty616dqg9f9ga6r9wpmzy4fpy1h81493nws8tz85es198xso">nano:nano_3jyoorubjojjty616dqg9f9ga6r9wpmzy4fpy1h81493nws8tz85es198xso</a>
+    </li>
+  </ul>
+  <h3 id="keys">keys</h3>
+  <p>
+    The keys below identify me. A full list of keys, including those that
+    identify my devices, is available at <a href="/keys">~/keys</a>.
+  </p>
+  <ul>
+    <li>
+      <a
+        href="https://viewer.alfis.name/key/D9818E5CE19E8886843E320107959A7B559C0FFCB6834A57BBCE4ABD50DC5FA5">alfis:D9818E5CE19E8886843E320107959A7B559C0FFCB6834A57BBCE4ABD50DC5FA5</a>
+    </li>
+    <li>
+      <a href="/jyooru.gpg">gpg:9148DC9EF4D53EB6A30E8EF018550BD205E9EF64</a>
+    </li>
+    <li>
+      <a
+        href="ipns://k51qzi5uqu5djm5pme47pfevgclixua7b0watnrjtpg087i0uknnu09h6rk1k0">ipns:k51qzi5uqu5djm5pme47pfevgclixua7b0watnrjtpg087i0uknnu09h6rk1k0</a>
+    </li>
+    <li>
+      <a href="/jyooru.pub">ssh:bFfvr3xAkHoZxgssqghDJIDKMGelB60ETijlFuiSmpc</a>
+    </li>
   </ul>
   {% endblock %}
 </main>

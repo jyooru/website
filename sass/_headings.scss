@@ -1,46 +1,10 @@
-// h1 {
-//   left: (-9px * 1) + -9.02px;
-//   &::before {
-//     content: "# ";
-//   }
-// }
-h2 {
-  left: (-9px * 2) + -9.02px;
-  &::before {
-    content: "## ";
-  }
-}
-h3 {
-  left: (-9px * 3) + -9.02px;
-  &::before {
-    content: "### ";
-  }
-}
-h4 {
-  left: (-9px * 4) + -9.02px;
-  &::before {
-    content: "#### ";
-  }
-}
-h5 {
-  left: (-9px * 5) + -9.02px;
-  &::before {
-    content: "##### ";
-  }
-}
-h6 {
-  left: (-9px * 6) + -9.02px;
-  &::before {
-    content: "###### ";
-  }
-}
-
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
+  text-transform: lower;
   position: relative;
   &::before {
     color: var(--primary-color);
@@ -49,4 +13,23 @@ h6 {
   @media screen and (max-width: 1000px) {
     left: 0;
   }
+}
+
+h1::before {
+  content: "# ";
+}
+h2::before {
+  content: "## ";
+}
+h3::before {
+  content: "### ";
+}
+h4::before {
+  content: "#### ";
+}
+h5::before {
+  content: "##### ";
+}
+h6::before {
+  content: "###### ";
 }
