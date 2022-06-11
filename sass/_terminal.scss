@@ -1,36 +1,29 @@
+$font-size: 15px;
+$line-height: 1.4em;
+$space: 10px;
+
 :root {
-  --global-font-size: 15px;
-  --global-line-height: 1.4em;
-  --global-space: 10px;
   --font-stack: FiraCode Nerd Font, Fira Code, Fira Mono, monospace;
-  --page-width: 60em;
-  --input-style: solid;
-  --display-h1-decoration: none;
 }
 
 * {
   box-sizing: border-box;
   text-rendering: geometricPrecision;
-}
 
-*::-moz-selection {
-  background: var(--base0B);
-  color: var(--base00);
-}
-
-*::selection {
-  background: var(--base0B);
-  color: var(--base00);
+  &::selection, ::-moz-selection {
+    background: $base0B;
+    color: $base00;
+  }
 }
 
 body {
-  font-size: var(--global-font-size);
-  color: var(--base05);
-  line-height: var(--global-line-height);
+  font-size: $font-size;
+  color: $base05;
+  line-height: $line-height;
   margin: 0;
   font-family: var(--font-stack);
   word-wrap: break-word;
-  background-color: var(--base00);
+  background-color: $base00;
 }
 
 h1,
@@ -40,32 +33,32 @@ h4,
 h5,
 h6,
 .logo {
-  line-height: var(--global-line-height);
+  line-height: $line-height;
 }
 
 a {
   cursor: pointer;
-  color: var(--base0B);
+  color: $base0B;
   text-decoration: none;
-}
 
-a:hover {
-  background-color: var(--base0B);
-  color: var(--base00);
+  &:hover {
+    background-color: $base0B;
+    color: $base00;
+  }
 }
 
 em {
-  font-size: var(--global-font-size);
+  font-size: $font-size;
   font-style: italic;
   font-family: var(--font-stack);
-  color: var(--base05);
+  color: $base05;
 }
 
 blockquote,
 code,
 em,
 strong {
-  line-height: var(--global-line-height);
+  line-height: $line-height;
 }
 
 blockquote,
@@ -95,8 +88,8 @@ ol,
 p,
 ul,
 .logo {
-  margin-top: calc(var(--global-space) * 2);
-  margin-bottom: calc(var(--global-space) * 2);
+  margin-top: $space * 2;
+  margin-bottom: $space * 2;
 }
 
 h1,
@@ -104,18 +97,10 @@ h1,
   position: relative;
   display: inline-block;
   display: table-cell;
-  padding: calc(var(--global-space) * 2) 0 calc(var(--global-space) * 2);
+  padding: $space * 2 0 $space * 2;
   margin: 0;
   overflow: hidden;
   font-weight: 600;
-}
-
-h1::after {
-  content: "====================================================================================================";
-  position: absolute;
-  bottom: 5px;
-  left: 0;
-  display: var(--display-h1-decoration);
 }
 
 h1 + *,
@@ -129,13 +114,13 @@ h4,
 h5,
 h6 {
   position: relative;
-  margin-bottom: var(--global-line-height);
+  margin-bottom: $line-height;
   font-weight: 600;
 }
 
 blockquote {
   position: relative;
-  padding-left: calc(var(--global-space) * 2);
+  padding-left: $space * 2;
   padding-left: 2ch;
   overflow: hidden;
 }
@@ -146,13 +131,13 @@ blockquote::after {
   position: absolute;
   top: 0;
   left: 0;
-  line-height: var(--global-line-height);
+  line-height: $line-height;
   color: #9ca2ab;
 }
 
 code {
   font-weight: inherit;
-  background-color: var(--base02);
+  background-color: $base02;
   font-family: var(--font-stack);
 }
 
@@ -171,10 +156,10 @@ pre {
   display: block;
   word-break: break-all;
   word-wrap: break-word;
-  color: var(--base04);
-  background-color: var(--base00);
-  border: 1px solid var(--base04);
-  padding: var(--global-space);
+  color: $base04;
+  background-color: $base00;
+  border: 1px solid $base04;
+  padding: $space;
   white-space: pre-wrap;
   white-space: -moz-pre-wrap;
   white-space: -pre-wrap;
@@ -200,10 +185,10 @@ pre code {
 .terminal h6,
 .terminal strong,
 .terminal .logo {
-  font-size: var(--global-font-size);
+  font-size: $font-size;
   font-style: normal;
   font-family: var(--font-stack);
-  color: var(--base05);
+  color: $base05;
 }
 
 .terminal-prompt {
@@ -218,7 +203,7 @@ pre code {
 .terminal-prompt::after {
   content: "";
   animation: cursor 800ms infinite;
-  background: var(--base0B);
+  background: $base0B;
   border-radius: 0;
   display: inline-block;
   height: 1em;
@@ -260,7 +245,7 @@ li,
 li > ul > li {
   position: relative;
   display: block;
-  padding-left: calc(var(--global-space) * 2);
+  padding-left: $space * 2;
 }
 
 nav > ul > li {
@@ -331,7 +316,7 @@ ul ul {
   flex-direction: column;
   width: 100%;
   flex-grow: 1;
-  font-size: var(--global-font-size);
+  font-size: $font-size;
   margin-top: 0;
 }
 
@@ -342,7 +327,7 @@ ul ul {
 }
 
 ol.terminal-toc li {
-  border-bottom: 1px dotted var(--base04);
+  border-bottom: 1px dotted $base04;
   padding: 0;
   margin-bottom: 15px;
 }
@@ -353,7 +338,7 @@ ol.terminal-toc li {
 
 ol.terminal-toc li a {
   margin: 4px 4px 4px 0;
-  background: var(--base00);
+  background: $base00;
   position: relative;
   top: 6px;
   text-align: left;
@@ -365,11 +350,11 @@ ol.terminal-toc li a {
   display: block;
   width: 100%;
   border: none;
-  color: var(--base04);
+  color: $base04;
 }
 
 .terminal-menu li a.active {
-  color: var(--base05);
+  color: $base05;
 }
 
 .terminal-menu li a:hover {
@@ -382,37 +367,37 @@ ol.terminal-toc li::before {
   counter-increment: item;
   position: absolute;
   right: 0;
-  background: var(--base00);
+  background: $base00;
   padding: 4px 0 4px 4px;
   bottom: -8px;
 }
 
 ol.terminal-toc li a:hover {
-  background: var(--base0B);
-  color: var(--base00);
+  background: $base0B;
+  color: $base00;
 }
 
 hr {
   position: relative;
   overflow: hidden;
-  margin: calc(var(--global-space) * 4) 0;
+  margin: $space * 4 0;
   border: 0;
-  border-bottom: 1px dashed var(--base04);
+  border-bottom: 1px dashed $base04;
 }
 
 p {
-  margin: 0 0 var(--global-line-height);
+  margin: 0 0 $line-height;
   color: var(--global-font-color);
 }
 
 .container {
-  max-width: var(--page-width);
+  max-width: 60em;
 }
 
 .container,
 .container-fluid {
   margin: 0 auto;
-  padding: 0 calc(var(--global-space) * 2);
+  padding: 0 $space * 2;
 }
 
 img {
@@ -421,7 +406,7 @@ img {
 
 .progress-bar {
   height: 8px;
-  background-color: var(--base03);
+  background-color: $base03;
   margin: 12px 0;
 }
 
@@ -430,7 +415,7 @@ img {
 }
 
 .progress-bar-filled {
-  background-color: var(--base0B);
+  background-color: $base0B;
   height: 100%;
   transition: width 0.3s ease;
   position: relative;
@@ -440,14 +425,14 @@ img {
 .progress-bar-filled::before {
   content: "";
   border: 6px solid transparent;
-  border-top-color: var(--base0B);
+  border-top-color: $base0B;
   position: absolute;
   top: -12px;
   right: -6px;
 }
 
 .progress-bar-filled::after {
-  color: var(--base0B);
+  color: $base0B;
   content: attr(data-filled);
   display: block;
   font-size: 12px;
@@ -471,17 +456,17 @@ img {
 table {
   width: 100%;
   border-collapse: collapse;
-  margin: var(--global-line-height) 0;
-  color: var(--base05);
-  font-size: var(--global-font-size);
+  margin: $line-height 0;
+  color: $base05;
+  font-size: $font-size;
 }
 
 table td,
 table th {
   vertical-align: top;
-  border: 1px solid var(--base05);
-  line-height: var(--global-line-height);
-  padding: calc(var(--global-space) / 2);
+  border: 1px solid $base05;
+  line-height: $line-height;
+  padding: $space / 2;
   font-size: 1em;
 }
 
@@ -500,7 +485,7 @@ table caption {
 
 table tbody td:first-child {
   font-weight: 700;
-  color: var(--base04);
+  color: $base04;
 }
 
 .form {
@@ -508,13 +493,13 @@ table tbody td:first-child {
 }
 
 fieldset {
-  border: 1px solid var(--base05);
+  border: 1px solid $base05;
   padding: 1em;
 }
 
 label {
   font-size: 1em;
-  color: var(--base05);
+  color: $base05;
 }
 
 input[type="email"],
@@ -522,7 +507,7 @@ input[type="text"],
 input[type="number"],
 input[type="password"],
 input[type="search"] {
-  border: 1px var(--input-style) var(--base05);
+  border: 1px solid $base05;
   width: 100%;
   padding: 0.7em 0.5em;
   font-size: 1em;
@@ -543,7 +528,7 @@ input[type="password"]:focus,
 input[type="search"]:focus {
   outline: none;
   -webkit-appearance: none;
-  border: 1px solid var(--base05);
+  border: 1px solid $base05;
 }
 
 input[type="text"]:not(:placeholder-shown):invalid,
@@ -551,18 +536,18 @@ input[type="email"]:not(:placeholder-shown):invalid,
 input[type="password"]:not(:placeholder-shown):invalid,
 input[type="search"]:not(:placeholder-shown):invalid,
 input[type="number"]:not(:placeholder-shown):invalid {
-  border-color: var(--base08);
+  border-color: $base08;
 }
 
 input,
 textarea {
-  color: var(--base05);
-  background-color: var(--base00);
+  color: $base05;
+  background-color: $base00;
 }
 
 input::placeholder,
 textarea::placeholder {
-  color: var(--base04) !important;
+  color: $base04 !important;
   opacity: 1;
 }
 
@@ -570,7 +555,7 @@ textarea {
   height: auto;
   width: 100%;
   resize: none;
-  border: 1px var(--input-style) var(--base05);
+  border: 1px solid $base05;
   padding: 0.5em;
   font-size: 1em;
   font-family: var(--font-stack);
@@ -581,11 +566,11 @@ textarea {
 textarea:focus {
   outline: none;
   -webkit-appearance: none;
-  border: 1px solid var(--base05);
+  border: 1px solid $base05;
 }
 
 textarea:not(:placeholder-shown):invalid {
-  border-color: var(--base08);
+  border-color: $base08;
 }
 
 input:-webkit-autofill,
@@ -595,15 +580,15 @@ textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-  border: 1px solid var(--base05);
-  -webkit-text-fill-color: var(--base05);
-  box-shadow: 0 0 0 1000px var(--base00) inset;
-  -webkit-box-shadow: 0 0 0 1000px var(--base00) inset;
+  border: 1px solid $base05;
+  -webkit-text-fill-color: $base05;
+  box-shadow: 0 0 0 1000px $base00 inset;
+  -webkit-box-shadow: 0 0 0 1000px $base00 inset;
   transition: background-color 5000s ease-in-out 0s;
 }
 
 .form-group {
-  margin-bottom: var(--global-line-height);
+  margin-bottom: $line-height;
   overflow: auto;
 }
 
@@ -634,8 +619,8 @@ select:-webkit-autofill:focus {
 }
 
 .btn.btn-ghost {
-  border-color: var(--base05);
-  color: var(--base05);
+  border-color: $base05;
+  color: $base05;
   background-color: transparent;
 }
 
@@ -657,69 +642,69 @@ select:-webkit-autofill:focus {
 }
 
 .btn-default {
-  background-color: var(--base05);
-  border-color: var(--base00);
-  color: var(--base00);
+  background-color: $base05;
+  border-color: $base00;
+  color: $base00;
 }
 
 .btn-default:hover,
 .btn-default:focus:not(.btn-ghost) {
-  background-color: var(--base04);
-  color: var(--base00);
+  background-color: $base04;
+  color: $base00;
 }
 
 .btn-default.btn-ghost:focus,
 .btn-default.btn-ghost:hover {
-  border-color: var(--base04);
-  color: var(--base04);
+  border-color: $base04;
+  color: $base04;
   z-index: 2;
 }
 
 .btn-error {
-  color: var(--base00);
-  background-color: var(--base08);
-  border: 1px solid var(--base08);
+  color: $base00;
+  background-color: $base08;
+  border: 1px solid $base08;
 }
 
 .btn-error:hover,
 .btn-error:focus:not(.btn-ghost) {
-  background-color: var(--base08);
-  border-color: var(--base08);
+  background-color: $base08;
+  border-color: $base08;
 }
 
 .btn-error.btn-ghost {
-  border-color: var(--base08);
-  color: var(--base08);
+  border-color: $base08;
+  color: $base08;
 }
 
 .btn-error.btn-ghost:focus,
 .btn-error.btn-ghost:hover {
-  border-color: var(--base08);
-  color: var(--base08);
+  border-color: $base08;
+  color: $base08;
   z-index: 2;
 }
 
 .btn-primary {
-  color: var(--base00);
-  background-color: var(--base0B);
-  border: 1px solid var(--base0B);
+  color: $base00;
+  background-color: $base0B;
+  border: 1px solid $base0B;
 }
 
 .btn-primary:hover,
 .btn-primary:focus:not(.btn-ghost) {
-  background-color: var(--base0B);
-  border-color: var(--base0B);
+  background-color: $base0B;
+  border-color: $base0B;
 }
 
 .btn-primary.btn-ghost {
-  border-color: var(--base0B);
-  color: var(--base0B);
+  border-color: $base0B;
+  color: $base0B;
 }
 
 .btn-primary.btn-ghost:focus,
 .btn-primary.btn-ghost:hover {
-  border-color: var(--base0B);
-  color: var(--base0B);
+  border-color: $base0B;
+  color: $base0B;
   z-index: 2;
 }
 
@@ -741,18 +726,18 @@ select:-webkit-autofill:focus {
 }
 
 .terminal-card {
-  border: 1px solid var(--base04);
+  border: 1px solid $base04;
 }
 
 .terminal-card > header {
-  color: var(--base00);
+  color: $base00;
   text-align: center;
-  background-color: var(--base04);
+  background-color: $base04;
   padding: 0.5em 0;
 }
 
 .terminal-card > div:first-of-type {
-  padding: var(--global-space);
+  padding: $space;
 }
 
 .terminal-timeline {
@@ -762,7 +747,7 @@ select:-webkit-autofill:focus {
 
 .terminal-timeline::before {
   content: " ";
-  background: var(--base04);
+  background: $base04;
   display: inline-block;
   position: absolute;
   left: 35px;
@@ -777,8 +762,8 @@ select:-webkit-autofill:focus {
 
 .terminal-timeline .terminal-card::before {
   content: " ";
-  background: var(--base00);
-  border: 2px solid var(--base04);
+  background: $base00;
+  border: 2px solid $base04;
   display: inline-block;
   position: absolute;
   margin-top: 25px;
@@ -789,20 +774,20 @@ select:-webkit-autofill:focus {
 }
 
 .terminal-alert {
-  color: var(--base05);
+  color: $base05;
   padding: 1em;
-  border: 1px solid var(--base05);
-  margin-bottom: var(--global-space);
+  border: 1px solid $base05;
+  margin-bottom: $space;
 }
 
 .terminal-alert-error {
-  color: var(--base08);
-  border-color: var(--base08);
+  color: $base08;
+  border-color: $base08;
 }
 
 .terminal-alert-primary {
-  color: var(--base0B);
-  border-color: var(--base0B);
+  color: $base0B;
+  border-color: $base0B;
 }
 
 @media screen and (max-width: 960px) {
@@ -833,7 +818,7 @@ select:-webkit-autofill:focus {
     justify-items: flex-end;
     align-items: center;
     justify-content: flex-end;
-    margin-top: calc(var(--global-space) * 2);
+    margin-top: $space * 2;
   }
 
   .terminal-menu li {
@@ -851,7 +836,7 @@ select:-webkit-autofill:focus {
 }
 
 .terminal-media-left {
-  padding-right: var(--global-space);
+  padding-right: $space;
 }
 
 .terminal-media-left,
@@ -861,7 +846,7 @@ select:-webkit-autofill:focus {
 }
 
 .terminal-media-right {
-  padding-left: var(--global-space);
+  padding-left: $space;
 }
 
 .terminal-media-body {
@@ -879,11 +864,11 @@ select:-webkit-autofill:focus {
 }
 
 .terminal-placeholder {
-  background-color: var(--base04);
+  background-color: $base04;
   text-align: center;
-  color: var(--base05);
+  color: $base05;
   font-size: 1rem;
-  border: 1px solid var(--base04);
+  border: 1px solid $base04;
 }
 
 figure > img {
@@ -891,8 +876,8 @@ figure > img {
 }
 
 .terminal-avatarholder {
-  width: calc(var(--global-space) * 5);
-  height: calc(var(--global-space) * 5);
+  width: $space * 5;
+  height: $space * 5;
 }
 
 .terminal-avatarholder img {
@@ -904,6 +889,6 @@ figure {
 }
 
 figure > figcaption {
-  color: var(--base04);
+  color: $base04;
   text-align: center;
 }
