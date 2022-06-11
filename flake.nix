@@ -13,51 +13,52 @@
       inherit self inputs;
 
       supportedSystems = [ "x86_64-linux" ];
-      sharedOverlays = [ dotfiles.overlays.nodePackages ];
 
       outputsBuilder = channels:
         with channels.nixpkgs;
-
-        let
-          pkgs = channels.nixpkgs;
-
-          inputs = [ zola ] ++ attrValues modules;
-        in
-
+        let buildInputs = [ zola ]; in
         rec {
-          defaultApp = apps.serve;
-          apps = {
-            link = writeShellApplication {
-              name = "link";
-              runtimeInputs = inputs;
-              text = ''
-                mkdir -p modules
-                ${forModule (name: path: "unlink modules/${name} || true")}
-                ${forModule (name: path: "ln -s ${path} modules/${name}")}
-              '';
-            };
-            serve = writeShellApplication {
-              name = "serve";
-              runtimeInputs = inputs;
-              text = "${apps.link}/bin/link; zola serve";
+          apps = rec {
+            default = serve;
+            serve = {
+              type = "app";
+              program = toString (writeShellScript "serve" "${zola}/bin/zola serve");
             };
           };
 
-          devShell = mkShell { packages = [ zola ]; };
+          devShells = rec {
+            default = website;
+            website = mkShell { packages = buildInputs; };
+          };
 
-          defaultPackage = packages.website;
-          packages = modules // {
+          packages = rec {
+            default = website;
             website = stdenv.mkDerivation {
-              name = "website";
+              pname = "website";
+              version = self.lastModifiedDate;
+
               src = ./.;
-              buildInputs = inputs;
+
+              inherit buildInputs;
+
               buildPhase = ''
-                mkdir modules
-                ${forModule (name: path: "cp -r ${path} modules/${name}")}
+                runHook preBuild
+              
                 zola build
+
+                runHook postBuild
               '';
+
+              preInstall = ''
+                cp public/404.html public/ipfs-404.html
+              '';
+
               installPhase = ''
+                runHook preInstall
+
                 cp -r public $out
+
+                runHook postInstall
               '';
             };
           };
