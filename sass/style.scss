@@ -15,12 +15,6 @@
   }
 }
 
-.terminal-prompt {
-  &::before, &::after {
-    content: none;
-  }
-}
-
 .alt {
   color: var(--base04)
 }
