@@ -15,53 +15,13 @@
   }
 }
 
-.terminal-command {
-  font-weight: normal;
-}
 
 .terminal-prompt {
-  &::before {
+  &::before, &::after {
     content: none;
   }
-  &::after {
-    animation: none;
-    content: "a";
-    color: transparent;
-    margin-left: 0; // there is a space there
-    opacity: 0;
-    width: auto;
-  }
 }
 
-main {
-  min-height: calc(100vh - (61px * 2));
-}
-
-footer {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  .terminal-menu ul {
-    justify-content: center;
-    li {
-      &,
-      a:not(.btn) {
-        color: var(--tertiary-color);
-      }
-      a:not(.btn):hover {
-        color: var(--secondary-color);
-      }
-    }
-  }
-}
-
-p {
-  text-align: justify;
-}
-
-li p {
-  margin-bottom: 0;
-}
-
-.comment {
-  color: var(--tertiary-color);
+.alt {
+  color: var(--base04)
 }

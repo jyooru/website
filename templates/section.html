@@ -1,0 +1,45 @@
+{% extends "index.html" %}
+
+{% block title %}{{ config.title }}/{{ section.title }}{% endblock %}
+
+{% block content %}
+<h1>{{ section.title }}</h1>
+
+{{ section.content | safe }}
+
+<ul>
+  {% set items = section.pages %}
+  {% for path in section.subsections %}
+  {% set_global items = items | concat(with=get_section(path=path)) %}
+  {% endfor %}
+
+  {% for item in items | sort(attribute="title") %}
+  <li>
+    <b><a href="{{ item.permalink }}">{{ item.title }}</a></b>
+
+    {% if item.extra is defined %}
+    <br>
+    <span class="alt">
+      {% for key, value in item.extra %}
+
+      {% set end = "," %}
+      {% if loop.last %}{% set end = "" %}{% endif %}
+
+      {% if key == "using" %}
+      Built using {{ value }}{{ end }}
+
+      {% else %}
+      {% if value is number and value == 1 %}{% set key = key | trim_end_matches(pat="s") %}{% endif %}
+      {{ value }} {{ key }}{{ end }}
+
+      {% endif %}
+      {% endfor %}
+    </span>
+    {% endif %}
+
+    {% if item.description is defined %}<p>{{ item.description }}</p>{% endif %}
+
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}
