@@ -1,0 +1,31 @@
+.terminal-media:not(:last-child) {
+  margin-bottom: 1.25rem;
+}
+
+.terminal-media-left {
+  padding-right: $space;
+}
+
+.terminal-media-left,
+.terminal-media-right {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.terminal-media-right {
+  padding-left: $space;
+}
+
+.terminal-media-body {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.terminal-media-heading {
+  font-size: 1em;
+  font-weight: 700;
+}
+
+.terminal-media-content {
+  margin-top: 0.3rem;
+}

@@ -1,0 +1,7 @@
+@function repeat($character, $n) {
+  $string: "";
+  @for $i from 1 through $n {
+    $string: $string + $character;
+  }
+  @return $string;
+}

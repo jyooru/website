@@ -1,0 +1,47 @@
+.terminal-card {
+  border: 1px solid $base04;
+}
+
+.terminal-card > header {
+  color: $base00;
+  text-align: center;
+  background-color: $base04;
+  padding: 0.5em 0;
+}
+
+.terminal-card > div:first-of-type {
+  padding: $space;
+}
+
+.terminal-timeline {
+  position: relative;
+  padding-left: 70px;
+}
+
+.terminal-timeline::before {
+  content: " ";
+  background: $base04;
+  display: inline-block;
+  position: absolute;
+  left: 35px;
+  width: 2px;
+  height: 100%;
+  z-index: 400;
+}
+
+.terminal-timeline .terminal-card {
+  margin-bottom: 25px;
+}
+
+.terminal-timeline .terminal-card::before {
+  content: " ";
+  background: $base00;
+  border: 2px solid $base04;
+  display: inline-block;
+  position: absolute;
+  margin-top: 25px;
+  left: 26px;
+  width: 15px;
+  height: 15px;
+  z-index: 400;
+}

@@ -1,0 +1,16 @@
+.terminal-alert {
+  color: $base05;
+  padding: 1em;
+  border: 1px solid $base05;
+  margin-bottom: $space;
+}
+
+.terminal-alert-error {
+  color: $base08;
+  border-color: $base08;
+}
+
+.terminal-alert-primary {
+  color: $base0B;
+  border-color: $base0B;
+}

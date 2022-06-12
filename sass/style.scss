@@ -1,6 +1,8 @@
-@import "_colors";
-@import "_headings";
-@import "_terminal";
+@import "functions";
+
+@import "colors";
+@import "headings";
+@import "terminal";
 
 .terminal-command,
 .terminal-menu li {
@@ -16,7 +18,7 @@
 }
 
 .alt {
-  color: var(--base04)
+  color: var(--base04);
 }
 
 p {
