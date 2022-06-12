@@ -4,19 +4,6 @@
 @import "headings";
 @import "terminal";
 
-.terminal-command,
-.terminal-menu li {
-  color: var(--secondary-color);
-
-  &,
-  & a {
-    transition: color 0.2s;
-  }
-  & a:hover {
-    color: var(--font-color);
-  }
-}
-
 .alt {
   color: var(--base04);
 }

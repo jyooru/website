@@ -295,16 +295,10 @@ ul ul {
   display: block;
   width: 100%;
   border: none;
-  color: $base04;
 }
 
 .terminal-menu li a.active {
   color: $base05;
-}
-
-.terminal-menu li a:hover {
-  background: none;
-  color: inherit;
 }
 
 hr {
