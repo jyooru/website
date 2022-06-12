@@ -10,7 +10,12 @@ $space: 10px;
   box-sizing: border-box;
   text-rendering: geometricPrecision;
 
-  &::selection, ::-moz-selection {
+  // do not put together, breaks for some reason
+  &::selection{
+    background: $base0B;
+    color: $base00;
+  }
+  &::-moz-selection {
     background: $base0B;
     color: $base00;
   }
