@@ -1,0 +1,58 @@
+{
+  "dotfiles": {
+    "description": "Reproducible and declarative configuration for my laptop and cluster using NixOS",
+    "extra": {
+      "using": "Nix",
+      "stars": 4
+    }
+  },
+  "minecraft-server-discord-status": {
+    "description": "Updates a Discord message with the status of a Minecraft server",
+    "extra": {
+      "using": "Python",
+      "stars": 1
+    }
+  },
+  "nix-minecraft-servers": {
+    "description": "All Minecraft server versions packaged for Nix",
+    "extra": {
+      "using": "Python",
+      "stars": 2
+    }
+  },
+  "pearson-pdf": {
+    "description": "Tool to download Pearson books as PDFs",
+    "extra": {
+      "using": "Python",
+      "stars": 5
+    }
+  },
+  "pins": {
+    "description": "hmm but are your archives compiled from source?",
+    "extra": {
+      "using": "Nix",
+      "stars": 0
+    }
+  },
+  "website": {
+    "description": "My website hosted on the IPFS network",
+    "extra": {
+      "using": "Nix",
+      "stars": 1
+    }
+  },
+  "wigle-csv": {
+    "description": "Python module to parse the WiGLE CSV format",
+    "extra": {
+      "using": "Python",
+      "stars": 0
+    }
+  },
+  "yggpp": {
+    "description": "Tool to scrape and interact with Yggdrasil public peers",
+    "extra": {
+      "using": "Python",
+      "stars": 0
+    }
+  }
+}

@@ -4,7 +4,7 @@ h3,
 h4,
 h5,
 h6 {
-  text-transform: lower;
+  text-transform: lowercase;
   position: relative;
   &::before {
     color: var(--primary-color);

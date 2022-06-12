@@ -15,8 +15,5 @@ rec {
   # use woff2 instead
   ttf2woff2 = callPackage ./ttf2woff2 { };
 
-  website = callPackage ./website {
-    inherit make-relative nerdfonts-woff2;
-    inherit (inputs) self;
-  };
+  website = callPackage ./website { inherit inputs make-relative nerdfonts-woff2; };
 }

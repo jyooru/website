@@ -1,11 +1,18 @@
 {
   inputs = {
-    dotfiles.url = "github:jyooru/dotfiles";
     utils.follows = "dotfiles/utils";
     nixpkgs.follows = "dotfiles/nixpkgs";
+
+    dotfiles.url = "github:jyooru/dotfiles";
+    minecraft-server-discord-status.url = "github:jyooru/minecraft-server-discord-status";
+    nix-minecraft-servers.url = "github:jyooru/nix-minecraft-servers";
+    pearson-pdf.url = "github:jyooru/pearson-pdf";
+    pins.url = "github:jyooru/pins";
+    wigle-csv.url = "github:jyooru/wigle-csv";
+    yggpp.url = "github:jyooru/yggpp";
   };
 
-  outputs = { self, dotfiles, utils, nixpkgs } @ inputs:
+  outputs = { self, utils, nixpkgs, ... } @ inputs:
     with nixpkgs.lib;
     with utils.lib;
 
