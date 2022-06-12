@@ -16,70 +16,28 @@
 
       outputsBuilder = channels:
         with channels.nixpkgs;
-        let buildInputs = [ self.packages.${system}.make-relative zola ]; in
         rec {
           apps = rec {
             default = serve;
             serve = {
               type = "app";
-              program = toString (writeShellScript "serve" "${zola}/bin/zola serve");
+              program = toString (writeShellScript "serve" "exec ${zola}/bin/zola serve");
             };
           };
 
           devShells = rec {
             default = website;
-            website = mkShell { packages = buildInputs; };
+            website = mkShell {
+              packages = [
+                packages.make-relative
+                zola
+              ];
+            };
           };
 
-          packages = rec {
-            default = website;
-
-            make-relative = mkYarnPackage rec {
-              pname = "make-relative";
-              version = "20221226";
-
-              src = fetchFromGitHub {
-                owner = "tmcw";
-                repo = pname;
-                rev = "bc6475fde56de5da366412a34c585e8530341909";
-                hash = "sha256-i/PcLiZJCwzzFFwG1BxbvdH/ETnBsFAqeKRdkUqqYMA=";
-              };
-              packageJSON = "${src}/package.json";
-              yarnLock = "${src}/yarn.lock";
-            };
-
-            website = stdenv.mkDerivation {
-              pname = "website";
-              version = self.lastModifiedDate;
-
-              src = ./.;
-
-              inherit buildInputs;
-
-              buildPhase = ''
-                runHook preBuild
-              
-                zola build
-
-                pushd public
-                make-relative ${(importTOML ./config.toml).base_url}
-                popd
-
-                runHook postBuild
-              '';
-
-              preInstall = ''
-                cp public/404.html public/ipfs-404.html
-              '';
-
-              installPhase = ''
-                runHook preInstall
-
-                cp -r public $out
-
-                runHook postInstall
-              '';
-            };
+          packages = import ./packages {
+            inherit inputs;
+            pkgs = channels.nixpkgs;
           };
         };
     };
