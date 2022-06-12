@@ -140,6 +140,10 @@ blockquote::after {
   color: #9ca2ab;
 }
 
+blockquote > *:last-child {
+  margin-bottom: 0;
+}
+
 code {
   font-weight: inherit;
   background-color: $base02;
